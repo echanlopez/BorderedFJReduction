@@ -90,7 +90,7 @@ bfj["InverseExtendedMatrix"]
 bfj["IterationCount"]
 bfj["MatrixStatus"]
 ```
-To visualize the Dirac brackets in a structured, publication-ready format:
+To visualize the generalized symplectic brackets in a structured, publication-ready format:
 
 ```mathematica
 FJSymplecticFrame[bfj]
