@@ -199,14 +199,15 @@ This project is released under the MIT License.
 The software is intended for academic and research use, providing a transparent and reproducible implementation of the methods described in the accompanying manuscript.
 
 ___
-## 🔖 DOI
+## 📌 Citation and DOI
 
-A citable release of this paclet is archived on Zenodo:
+The **BorderedFJReduction** software is archived in Zenodo and assigned a DOI.
 
-DOI: `10.5281/zenodo.18362980`
+- Concept DOI (all versions): https://doi.org/10.5281/zenodo.18362979  
+- Version-specific DOI (v0.1.1): https://doi.org/10.5281/zenodo.18362980
 ___
 
-## Citation
+## BibTeX Citation
 
 If you use **BorderedFJReduction** in your research, please cite the accompanying work:
 
@@ -222,7 +223,7 @@ If you use **BorderedFJReduction** in your research, please cite the accompanyin
   year    = {2026},
   note    = {The Faddeev--Jackiw algorithm is formulated as a geometrically
              constrained instance of the Matrix Bordering Technique.
-             Symbolic implementation available via the
-             \texttt{BorderedFJReduction} Paclet}
+             A symbolic implementation is provided via the
+             \texttt{BorderedFJReduction} Wolfram Language paclet.}
 }
 
