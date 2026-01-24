@@ -3,8 +3,8 @@ Symbolic engine for the Faddeev–Jackiw reduction based on geometrically constr
 
 ___
 
-📦 BorderedFJReduction
-<p align="center"> <img src="assets/BFJ_logo.png" alt="BorderedFJReduction logo" width="180"/> </p> <p align="center"> <b>A symbolic engine for the Faddeev–Jackiw reduction of singular Lagrangians,<br> grounded in geometrically constrained matrix bordering.</b> </p>
+## 📦 BorderedFJReduction
+<p align="center"> <img src="assets/bfred_logo.png" alt="BorderedFJReduction logo" width="600"/> </p> <p align="center"> <b>A symbolic engine for the Faddeev–Jackiw reduction of singular Lagrangians,<br> grounded in geometrically constrained matrix bordering.</b> </p>
 
 ___
 
