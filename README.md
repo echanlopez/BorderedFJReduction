@@ -58,7 +58,7 @@ ___
 
 ```mathematica
 PacletInstall[
-  "https://github.com/RECHAN-DYNAMICS/BorderedFJReduction/raw/main/BorderedFJReduction-0.1.0.paclet",
+  "https://github.com/echanlopez/BorderedFJReduction/releases/download/v0.1.0/BorderedFJReduction-0.1.0.paclet",
   ForceVersionInstall -> True
 ]
 ```
@@ -162,7 +162,19 @@ License details will be specified upon stable release.
 
 ___
 
-## ⭐ A note to reviewers
+## Citation
 
-This repository is not merely a code base.
-It is a computational manifestation of a structural theorem, designed to make constrained Hamiltonian dynamics transparent, reproducible, and symbolically inspectable.
+If you use **BorderedFJReduction** in your research, please cite the accompanying work:
+
+```bibtex
+@article{ChanMartinBorderedFJReduction,
+  title   = {The Faddeev--Jackiw Algorithm as a Geometrically Constrained Instance of the Matrix Bordering Technique},
+  author  = {Chan L{\'o}pez, Ram{\'o}n Eduardo and
+             Mart{\'\i}n Ruiz, Jos{\'e} Alberto and
+             Cabrera, Jaime Manuel and
+             Paulin Fuentes, Jorge Mauricio},
+  journal = {arXiv preprint},
+  year    = {2026},
+  note    = {Symbolic implementation and computational framework available via the BorderedFJReduction Paclet}
+}
+
