@@ -133,6 +133,7 @@ The implementation has been validated on:
 - Singular mechanical systems analyzed within the Dirac–Bergmann framework  
 - Systems exhibiting gauge symmetry
 
+>**These examples illustrate how the symbolic engine bridges abstract symplectic geometry with concrete mechanical realizations.**
 ___
 
 ## 👥 Authors
