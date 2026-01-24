@@ -194,8 +194,9 @@ ___
 
 ## 📄 License
 
-This project is released for academic and research use.
-License details will be specified upon stable release.
+This project is released under the MIT License.
+
+The software is intended for academic and research use, providing a transparent and reproducible implementation of the methods described in the accompanying manuscript.
 
 ___
 
