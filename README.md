@@ -134,6 +134,24 @@ The implementation has been validated on:
 - Systems exhibiting gauge symmetry
 
 >**These examples illustrate how the symbolic engine bridges abstract symplectic geometry with concrete mechanical realizations.**
+
+___
+
+## 📝 Editorial Status
+
+This paclet accompanies the manuscript
+
+> **Faddeev–Jackiw Reduction of Singular Lagrangians:  
+> A Matrix Bordering Approach with Symbolic Implementation**
+
+which is currently in preparation for submission and public dissemination.
+
+The present release corresponds to a **development version** of the symbolic engine, intended to:
+- establish computational reproducibility,
+- provide an inspectable implementation of the theoretical results,
+- and enable early technical validation by the community.
+
+The scientific priority of the underlying theoretical framework is fully documented in the accompanying manuscript.
 ___
 
 ## 👥 Authors
