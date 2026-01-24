@@ -199,6 +199,12 @@ This project is released under the MIT License.
 The software is intended for academic and research use, providing a transparent and reproducible implementation of the methods described in the accompanying manuscript.
 
 ___
+## 🔖 DOI
+
+A citable release of this paclet is archived on Zenodo:
+
+DOI: `10.5281/zenodo.XXXXXXX`
+___
 
 ## Citation
 
