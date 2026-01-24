@@ -39,7 +39,7 @@ ___
 
 - Queryable association interface for downstream analysis
 
-- Publication-ready visualization of Dirac brackets
+- Publication-ready visualization of generalized symplectic brackets
 
 ___
 
@@ -134,6 +134,24 @@ The implementation has been validated on:
 - Systems exhibiting gauge symmetry
 
 >**These examples illustrate how the symbolic engine bridges abstract symplectic geometry with concrete mechanical realizations.**
+
+___
+
+## 📝 Editorial Status
+
+This paclet accompanies the manuscript
+
+> **Faddeev–Jackiw Reduction of Singular Lagrangians:  
+> A Matrix Bordering Approach with Symbolic Implementation**
+
+which is currently in preparation for submission and public dissemination.
+
+The present release corresponds to a **development version** of the symbolic engine, intended to:
+- establish computational reproducibility,
+- provide an inspectable implementation of the theoretical results,
+- and enable early technical validation by the community.
+
+The scientific priority of the underlying theoretical framework is fully documented in the accompanying manuscript.
 ___
 
 ## 👥 Authors
@@ -176,9 +194,16 @@ ___
 
 ## 📄 License
 
-This project is released for academic and research use.
-License details will be specified upon stable release.
+This project is released under the MIT License.
 
+The software is intended for academic and research use, providing a transparent and reproducible implementation of the methods described in the accompanying manuscript.
+
+___
+## 🔖 DOI
+
+A citable release of this paclet is archived on Zenodo:
+
+DOI: `10.5281/zenodo.XXXXXXX`
 ___
 
 ## Citation
