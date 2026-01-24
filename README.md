@@ -187,13 +187,17 @@ If you use **BorderedFJReduction** in your research, please cite the accompanyin
 
 ```bibtex
 @article{ChanMartinBorderedFJReduction,
-  title   = {The Faddeev--Jackiw Algorithm as a Geometrically Constrained Instance of the Matrix Bordering Technique},
+  title   = {Faddeev--Jackiw Reduction of Singular Lagrangians:
+             A Matrix Bordering Approach with Symbolic Implementation},
   author  = {Chan L{\'o}pez, Ram{\'o}n Eduardo and
              Mart{\'\i}n Ruiz, Jos{\'e} Alberto and
              Cabrera, Jaime Manuel and
              Paulin Fuentes, Jorge Mauricio},
   journal = {arXiv preprint},
   year    = {2026},
-  note    = {Symbolic implementation and computational framework available via the BorderedFJReduction Paclet}
+  note    = {The Faddeev--Jackiw algorithm is formulated as a geometrically
+             constrained instance of the Matrix Bordering Technique.
+             Symbolic implementation available via the
+             \texttt{BorderedFJReduction} Paclet}
 }
 
