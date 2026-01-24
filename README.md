@@ -138,13 +138,13 @@ ___
 
 ## 👥 Authors
 
-- Ramón Eduardo Chan López
+- Ramón Eduardo Chan López (SECIHTI--DACB-UJAT)
 
-- José Alberto Martín Ruiz
+- José Alberto Martín Ruiz (ICN--UNAM)
 
-- Jaime Manuel Cabrera
+- Jaime Manuel Cabrera (SECIHTI-DACB--UJAT)
 
-- Jorge Mauricio Paulin Fuentes
+- Jorge Mauricio Paulin Fuentes (DACB--UJAT)
 
 ___
 
