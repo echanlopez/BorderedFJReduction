@@ -39,7 +39,7 @@ ___
 
 - Queryable association interface for downstream analysis
 
-- Publication-ready visualization of Dirac brackets
+- Publication-ready visualization of generalized symplectic brackets
 
 ___
 
