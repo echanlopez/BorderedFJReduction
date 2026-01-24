@@ -109,7 +109,8 @@ In such cases, the final pre-symplectic matrix and its null vectors are preserve
 
 ___
 
-## 📚 Scientific Context
+
+## 📚 Scientific Context and Related Work
 
 This package accompanies the theoretical development presented in:
 
