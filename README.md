@@ -112,17 +112,25 @@ ___
 
 ## 📚 Scientific Context and Related Work
 
+The theoretical foundation of this package is rooted in the geometric formulation of constrained dynamics introduced by Faddeev and Jackiw, which recasts singular Lagrangian systems in terms of pre-symplectic structures rather than hierarchical constraint classifications.
+
+The full iterative power of the method was developed by Barcelos-Neto and Wotzasek, who established a systematic procedure for extending the phase space until either a regular symplectic manifold or a gauge symmetry is revealed.
+
+From a linear algebra perspective, the present implementation makes explicit the connection between the Faddeev–Jackiw iteration and the Matrix Bordering Technique, a classical tool in numerical analysis and bifurcation theory for handling rank-deficient operators and structured singularities.
+
+Recent developments in computational and algorithmic physics have emphasized the role of symbolic rewriting systems and causal structures in the formulation of physical laws. In this spirit, **BorderedFJReduction** treats constrained dynamics as a deterministic transformation of symbolic states, rather than as a procedural manipulation of equations.
+
+As a result, the package complements existing symbolic approaches to constrained systems and is particularly well suited for studies where parametric dependence, bifurcation structure, and exact constraint algebra play a central role.
+
 This package accompanies the theoretical development presented in:
 
-> **Faddeev–Jackiw Reduction of Singular Lagrangians:
-A Matrix Bordering Approach with Symbolic Implementation**
+> **Faddeev–Jackiw Reduction of Singular Lagrangians:  
+> A Matrix Bordering Approach with Symbolic Implementation**
 
 The implementation has been validated on:
 
-- The Hojman–Urrutia model
-
-- Singular mechanical systems analyzed within the Dirac–Bergmann framework
-
+- The Hojman–Urrutia model  
+- Singular mechanical systems analyzed within the Dirac–Bergmann framework  
 - Systems exhibiting gauge symmetry
 
 ___
