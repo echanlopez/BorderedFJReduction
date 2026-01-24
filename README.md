@@ -211,6 +211,8 @@ ___
 
 If you use **BorderedFJReduction** in your research, please cite the accompanying work:
 
+### Article
+
 ```bibtex
 @article{ChanMartinBorderedFJReduction,
   title   = {Faddeev--Jackiw Reduction of Singular Lagrangians:
@@ -226,4 +228,21 @@ If you use **BorderedFJReduction** in your research, please cite the accompanyin
              A symbolic implementation is provided via the
              \texttt{BorderedFJReduction} Wolfram Language paclet.}
 }
+```
+### Software
+
+```bibtex
+@software{ChanLopez_BorderedFJReduction_2026,
+  author    = {Chan L{\'o}pez, Ram{\'o}n Eduardo and
+               Mart{\'\i}n Ruiz, Jos{\'e} Alberto and
+               Cabrera, Jaime Manuel and
+               Paulin Fuentes, Jorge Mauricio},
+  title     = {BorderedFJReduction: A Symbolic Engine for the Faddeev--Jackiw Reduction},
+  version   = {0.1.1},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.18362980},
+  url       = {https://github.com/echanlopez/BorderedFJReduction}
+}
+```
 
