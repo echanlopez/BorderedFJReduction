@@ -203,7 +203,7 @@ ___
 
 A citable release of this paclet is archived on Zenodo:
 
-DOI: `10.5281/zenodo.XXXXXXX`
+DOI: `10.5281/zenodo.18362980`
 ___
 
 ## Citation
