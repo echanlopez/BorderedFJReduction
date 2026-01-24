@@ -162,6 +162,15 @@ However, its algebraic architecture is designed as a kernel for future extension
 - Gauge theories (Maxwell, Yang–Mills)
 
 The long-term vision is a Tensor Faddeev–Jackiw Engine, where constraint handling emerges directly from the algebraic structure of the symplectic form.
+___
+
+## 🙏 Acknowledgements
+
+The author would like to acknowledge **[Eric Rimbey](https://community.wolfram.com/web/eric3)** for his critical feedback and rigorous code reviews during the early stages of this project.
+
+Although not directly involved in the final development of the package, his sharp critiques and uncompromising standards significantly influenced the architectural refinement of the symbolic engine. Many of the design decisions that led to the current, stable formulation were shaped by those early discussions.
+
+Such contributions, while often invisible in the final code, play a crucial role in the maturation of robust scientific software.
 
 ___
 
