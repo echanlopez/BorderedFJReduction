@@ -184,7 +184,7 @@ ___
 
 ## 🙏 Acknowledgements
 
-The author would like to acknowledge **[Eric Rimbey](https://community.wolfram.com/web/eric3)** for his uncompromising technical feedback and architectural critiques during the early development of this project.
+The lead developer of the software would like to acknowledge **[Eric Rimbey](https://community.wolfram.com/web/eric3)** for his critical feedback and rigorous code reviews during the early stages of this project.
 
 His emphasis on immutability, explicit semantic structure, and disciplined control of symbolic state played a decisive role in shaping the final design philosophy of the engine. Several aspects of the current implementation—particularly its rule-based structure and transparent error handling—are a direct consequence of those early discussions.
 
