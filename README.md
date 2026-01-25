@@ -184,11 +184,11 @@ ___
 
 ## 🙏 Acknowledgements
 
-The author would like to acknowledge **[Eric Rimbey](https://community.wolfram.com/web/eric3)** for his critical feedback and rigorous code reviews during the early stages of this project.
+The author would like to acknowledge **[Eric Rimbey](https://community.wolfram.com/web/eric3)** for his uncompromising technical feedback and architectural critiques during the early development of this project.
 
-Although not directly involved in the final development of the package, his sharp critiques and uncompromising standards significantly influenced the architectural refinement of the symbolic engine. Many of the design decisions that led to the current, stable formulation were shaped by those early discussions.
+His emphasis on immutability, explicit semantic structure, and disciplined control of symbolic state played a decisive role in shaping the final design philosophy of the engine. Several aspects of the current implementation—particularly its rule-based structure and transparent error handling—are a direct consequence of those early discussions.
 
-Such contributions, while often invisible in the final code, play a crucial role in the maturation of robust scientific software.
+Contributions of this kind, grounded in systems thinking and semantic rigor, are fundamental to the maturation of reliable scientific software, even when their impact is primarily architectural rather than directly visible in the final code.
 
 ___
 
