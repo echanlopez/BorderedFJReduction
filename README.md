@@ -246,3 +246,9 @@ If you use **BorderedFJReduction** in your research, please cite the accompanyin
 }
 ```
 
+## Development
+
+For maintainers and contributors:
+
+- [Release checklist](docs/RELEASE_CHECKLIST.md)
+
