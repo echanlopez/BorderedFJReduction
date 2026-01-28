@@ -1,76 +1,53 @@
-\# Contributing to BorderedFJReduction
+# Contributing to BorderedFJReduction
 
+Thank you for your interest in contributing to **BorderedFJReduction**.
 
+This repository hosts research-oriented scientific software implementing
+the Faddeev–Jackiw formalism via a matrix bordering approach.
+Contributions are welcome, provided they respect the mathematical
+and architectural principles of the project.
 
-Thank you for your interest in contributing.
+---
 
+## Scope of contributions
 
+We welcome contributions that:
 
-This project is research-oriented scientific software. Contributions are welcome,
+- Fix bugs with clear mathematical justification
+- Improve symbolic robustness or algorithmic clarity
+- Add well-motivated examples or test cases
+- Improve documentation without altering meaning
 
-provided they respect the mathematical and architectural principles of the code.
+We generally do **not** accept:
 
+- Purely stylistic refactors without technical motivation
+- Numerical shortcuts that obscure symbolic structure
+- Features unrelated to constrained Hamiltonian systems
 
+---
 
-\## Scope of contributions
+## Code principles
 
+All contributions should adhere to the following principles:
 
+- **Symbolic-first implementation**
+- **One-to-one correspondence with the underlying theory**
+- **Explicit handling of rank-deficient structures**
+- **No hidden heuristics or opaque optimizations**
 
-We welcome:
+---
 
-\- Bug fixes with clear mathematical justification
+## Workflow
 
-\- Improvements to symbolic robustness
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes with clear intent
+4. Commit using descriptive messages
+5. Open a pull request explaining *why* the change is correct
 
-\- Additional examples or test cases
+---
 
-\- Documentation clarifications
+## Licensing
 
-
-
-We generally do not accept:
-
-\- Purely stylistic refactors without technical motivation
-
-\- Numerical shortcuts that obscure symbolic structure
-
-\- Features unrelated to constrained systems or FJ reduction
-
-
-
-\## Code principles
-
-
-
-\- Symbolic-first implementation
-
-\- One-to-one correspondence with the underlying theory
-
-\- Explicit handling of rank deficiencies and constraints
-
-\- No hidden heuristics
-
-
-
-\## Workflow
-
-
-
-1\. Fork the repository
-
-2\. Create a feature branch
-
-3\. Commit with a clear, descriptive message
-
-4\. Submit a pull request explaining \*why\* the change is correct
-
-
-
-\## Licensing
-
-
-
-By contributing, you agree that your contributions will be released
-
-under the MIT License.
-
+By contributing to this repository, you agree that your contributions
+will be released under the **MIT License**.
