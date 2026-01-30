@@ -27,7 +27,6 @@ Begin["`Private`"]
 BorderedFJMatrix[Pattern[kineticEnergy, Blank[]], Pattern[symplecticPotential, Blank[]], Pattern[vars, Blank[]], OptionsPattern[]] := With[
 	{
 		maxIterations = OptionValue @ "MaxIterations",
-		potentialDerivatives = Map[D[symplecticPotential, #]&, vars],
 (*Initial system:original variables,one-form derived from the kinetic energy,no constraints*)
 		initialSystem = Association[
 			<|
