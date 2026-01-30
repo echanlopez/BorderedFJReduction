@@ -180,6 +180,17 @@ However, its algebraic architecture is designed as a kernel for future extension
 - Gauge theories (Maxwell, Yang–Mills)
 
 The long-term vision is a Tensor Faddeev–Jackiw Engine, where constraint handling emerges directly from the algebraic structure of the symplectic form.
+
+### Extension to infinite-dimensional settings (remarks)
+
+The algebraic logic underlying matrix bordering admits operator-theoretic generalizations.
+In particular, Schur complements have been systematically studied for bounded and
+complementable operators on Hilbert spaces, providing an appropriate framework for
+infinite-dimensional extensions under suitable analytic hypotheses.
+
+See for example:
+- C. Băcuţa, *Schur complements on Hilbert spaces*, Journal of Computational and Applied Mathematics **231** (2009).  
+  https://www.sciencedirect.com/science/article/pii/S0377042708004305
 ___
 
 ## 🙏 Acknowledgements
