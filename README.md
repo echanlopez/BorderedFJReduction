@@ -1,6 +1,12 @@
 # BorderedFJReduction
 Symbolic engine for the Faddeev–Jackiw reduction based on geometrically constrained matrix bordering.
 
+>**BorderedFJReduction** is a symbolic computational engine for the Faddeev–Jackiw reduction of constrained systems, implemented as a geometrically structured instance of the matrix bordering technique.
+>
+>The package is designed for analytical work on singular Lagrangians with finite degrees of freedom, emphasizing explicit constraint propagation, rank diagnostics, and transparent handling of gauge symmetries.
+>
+>**Project status:** active development. The theoretical formulation and software architecture are aligned with a research manuscript currently in preparation, and the package is intended as a reusable and extensible research tool rather than a black-box numerical routine.
+
 ___
 
 ## 📦 BorderedFJReduction
