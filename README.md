@@ -65,12 +65,14 @@ ___
 
 ## 📑 Table of Contents
 
+## Table of Contents
+
 - [Installation](#installation)
 - [Basic Usage](#basic-usage)
 - [API Summary](#api-summary)
 - [Visualization](#visualization)
-- [Future Directions](#-future-directions)
-- [Citation and DOI](#-citation-and-doi)
+- [Future Directions](#future-directions)
+- [Citation and DOI](#citation-and-doi)
 - [Contributing](#contributing)
 - [License](#license)
 
