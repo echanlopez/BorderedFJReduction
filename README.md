@@ -123,6 +123,15 @@ The following animation illustrates only the final symbolic structured output fo
   <img src="docs/bfjreduction.gif" alt="BorderedFJReduction basic symbolic reduction demo" width="720">
 </p>
 
+🔎 **Notes on the example**
+
+- The GIF intentionally displays only the summary output, not the full input.
+
+- The underlying Lagrangian contains physical parameters preserved symbolically.
+
+- This reflects the package philosophy:
+structure and diagnostics first, raw expressions second.
+
 ```mathematica
 bfj = BorderedFJMatrix[kineticEnergy, symplecticPotential, vars];
 ```
@@ -156,15 +165,6 @@ The object returned by `BorderedFJMatrix` is intentionally opaque but fully quer
 - `"InverseExtendedMatrix"` — generalized symplectic brackets
 - `"IterationCount"` — number of FJ iterations required for regularization
 - `"MatrixStatus"` — `"Regular"` or `"Singular"`
-
-🔎 **Notes on the example**
-
-- The GIF intentionally displays only the summary output, not the full input.
-
-- The underlying Lagrangian contains physical parameters preserved symbolically.
-
-- This reflects the package philosophy:
-structure and diagnostics first, raw expressions second.
 ___
 
 ## 🧭 Gauge Symmetry Detection
