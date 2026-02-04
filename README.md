@@ -132,6 +132,11 @@ The following animation illustrates only the final symbolic structured output fo
 - This reflects the package philosophy:
 structure and diagnostics first, raw expressions second.
 
+In practice, the output of `BorderedFJMatrix` is typically assigned to a symbolic
+object. This allows direct programmatic access to the internal structures generated
+by the reduction, such as constraints, extended symplectic matrices, and iteration
+metadata.
+
 ```mathematica
 bfj = BorderedFJMatrix[kineticEnergy, symplecticPotential, vars];
 ```
