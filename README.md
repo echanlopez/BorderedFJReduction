@@ -237,8 +237,8 @@ ___
 
 The **BorderedFJReduction** software is archived in Zenodo and assigned a DOI.
 
-- Concept DOI (all versions): https://doi.org/10.5281/zenodo.18362979  
-- Version-specific DOI (v0.1.1): https://doi.org/10.5281/zenodo.18362980
+- **Concept DOI (all versions):** https://doi.org/10.5281/zenodo.18362979  
+- **Version-specific DOI (v0.1.2 – recommended):** https://doi.org/10.5281/zenodo.18487436
 ___
 
 ## BibTeX Citation
