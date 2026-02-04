@@ -77,7 +77,7 @@ ___
 - [🙏 Acknowledgements](#-acknowledgements)
 - [📄 License](#-license)
 - [📌 Citation and DOI](#-citation-and-doi)
-- [Development](#development)
+- [📋 Development](#development)
 
 ## 🔧 Minimum Requirements
 
@@ -334,7 +334,7 @@ If you use **BorderedFJReduction** in your research, please cite the accompanyin
 }
 ```
 
-## Development
+## 📋 Development
 
 For maintainers and contributors:
 
