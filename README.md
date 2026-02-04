@@ -64,7 +64,7 @@ ___
 
 ```mathematica
 PacletInstall[
-  "https://github.com/echanlopez/BorderedFJReduction/releases/download/v0.1.0/BorderedFJReduction-0.1.0.paclet",
+  "https://github.com/echanlopez/BorderedFJReduction/releases/download/v0.1.2/BorderedFJReduction-0.1.1.paclet",
   ForceVersionInstall -> True
 ]
 ```
@@ -73,6 +73,10 @@ Then load the package:
 ```mathematica
 Needs["BorderedFJReduction`"]
 ```
+
+> **Note:** Release v0.1.2 supersedes earlier archived versions and corrects
+> a paclet packaging issue without modifying the underlying algorithm.
+
 ### Option 2: Local installation (development)
 
 ```mathematica
