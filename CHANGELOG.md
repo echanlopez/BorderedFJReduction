@@ -60,10 +60,6 @@ as far as applicable to research software.
 - Intended for analytical and research use on finite-dimensional constrained systems
 - Accompanies manuscript: *"Faddeev–Jackiw Reduction of Singular Lagrangians: A Matrix Bordering Approach with Symbolic Implementation"*
 
----
-
-## Links
-
-- [0.1.2]: https://github.com/echanlopez/BorderedFJReduction/releases/tag/v0.1.2
-- [0.1.1]: https://github.com/echanlopez/BorderedFJReduction/releases/tag/v0.1.1
-- [0.1.0]: https://github.com/echanlopez/BorderedFJReduction/releases/tag/v0.1.0
+[0.1.2]: https://github.com/echanlopez/BorderedFJReduction/releases/tag/v0.1.2
+[0.1.1]: https://github.com/echanlopez/BorderedFJReduction/releases/tag/v0.1.1
+[0.1.0]: https://github.com/echanlopez/BorderedFJReduction/releases/tag/v0.1.0
