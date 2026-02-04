@@ -82,10 +82,17 @@ ___
 
 ## 🧪 Basic Usage
 
+A minimal invocation returns a structured symbolic object summarizing the
+regularization status, constraint geometry, and phase-space extension of the system.
+
+Example shown below: Faddeev–Jackiw reduction of the Hojman–Urrutia Lagrangian
+(details omitted for clarity; see the Examples/ folder for the full definition).
+
+<!-- GIF: Basic Usage Summary --> <p align="center"> <img src="docs/basic-usage.gif" alt="Basic usage of BorderedFJReduction" width="720"/> </p>
 ```mathematica
 bfj = BorderedFJMatrix[kinetic, potential, vars];
 ```
-The returned object is **opaque** by design, but fully queryable:
+The returned object is opaque by design, but fully queryable:
 
 ```mathematica
 bfj["Constraints"]
@@ -96,11 +103,22 @@ bfj["InverseExtendedMatrix"]
 bfj["IterationCount"]
 bfj["MatrixStatus"]
 ```
-To visualize the generalized symplectic brackets in a structured, publication-ready format:
+
+To visualize the generalized symplectic brackets in a structured,
+publication-ready format:
 
 ```mathematica
 FJSymplecticFrame[bfj]
 ```
+
+🔎 **Notes on the example**
+
+- The GIF intentionally displays only the summary output, not the full input.
+
+- The underlying Lagrangian contains physical parameters preserved symbolically.
+
+- This reflects the package philosophy:
+structure and diagnostics first, raw expressions second.
 ___
 
 ## 🧭 Gauge Symmetry Detection
