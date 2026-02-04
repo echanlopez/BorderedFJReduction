@@ -65,8 +65,6 @@ ___
 
 ## 📑 Table of Contents
 
-## Table of Contents
-
 - [Installation](#installation)
 - [Basic Usage](#basic-usage)
 - [API Summary](#api-summary)
