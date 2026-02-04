@@ -65,18 +65,18 @@ ___
 
 ## 📑 Table of Contents
 
-- [Minimum Requirements](#minimum-requirements)
-- [Installation](#installation)
-- [Basic Usage](#basic-usage)
-- [API Summary](#api-summary)
-- [Gauge Symmetry Detection](#gauge-symmetry-detection)
-- [Scientific Context and Related Work](#scientific-context-and-related-work)
-- [Editorial Status](#editorial-status)
-- [Authors](#authors)
-- [Future Directions](#future-directions)
-- [Acknowledgements](#acknowledgements)
-- [License](#license)
-- [Citation and DOI](#citation-and-doi)
+- [🔧 Minimum Requirements](#-minimum-requirements)
+- [🚀 Installation](#-installation)
+- [🧪 Basic Usage](#-basic-usage)
+- [🧩 API Summary](#-api-summary)
+- [🧭 Gauge Symmetry Detection](#-gauge-symmetry-detection)
+- [📚 Scientific Context and Related Work](#-scientific-context-and-related-work)
+- [📝 Editorial Status](#-editorial-status)
+- [👥 Authors](#-authors)
+- [🔮 Future Directions](#-future-directions)
+- [🙏 Acknowledgements](#-acknowledgements)
+- [📄 License](#-license)
+- [📌 Citation and DOI](#-citation-and-doi)
 - [Development](#development)
 
 ## 🔧 Minimum Requirements
