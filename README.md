@@ -115,12 +115,14 @@ Example shown below: Faddeev–Jackiw reduction of the Hojman–Urrutia Lagrangi
 ```mathematica
 Needs["BorderedFJReduction`"]
 ```
+The following animation illustrates only the final symbolic structured output for a typical reduction.
+
 <p align="center">
   <img src="docs/bfjreduction.gif" alt="BorderedFJReduction basic symbolic reduction demo" width="720">
 </p>
 
 ```mathematica
-bfj = BorderedFJMatrix[kinetic, potential, vars];
+bfj = BorderedFJMatrix[kineticEnergy, symplecticPotential, vars];
 ```
 The returned object is opaque by design, but fully queryable:
 
