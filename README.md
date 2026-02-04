@@ -138,7 +138,7 @@ metadata.
 ```mathematica
 bfj = BorderedFJMatrix[kineticEnergy, symplecticPotential, vars];
 ```
-The returned object is opaque by design, but fully queryable:
+The returned object supports the following query interface:
 
 ```mathematica
 bfj["Constraints"]
