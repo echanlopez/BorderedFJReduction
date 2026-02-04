@@ -91,7 +91,10 @@ regularization status, constraint geometry, and phase-space extension of the sys
 Example shown below: Faddeev–Jackiw reduction of the Hojman–Urrutia Lagrangian
 (details omitted for clarity; see the Examples/ folder for the full definition).
 
-<!-- GIF: Basic Usage Summary --> <p align="center"> <img src="docs/bfjreduction.gif" alt="Basic usage of BorderedFJReduction" width="720"/> </p>
+<p align="center">
+  <img src="docs/bfjreduction.gif" alt="BorderedFJReduction basic symbolic reduction demo" width="720">
+</p>
+
 ```mathematica
 bfj = BorderedFJMatrix[kinetic, potential, vars];
 ```
