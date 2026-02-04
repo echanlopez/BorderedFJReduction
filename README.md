@@ -1,3 +1,7 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18487436.svg)](https://doi.org/10.5281/zenodo.18487436)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Release](https://img.shields.io/github/v/release/echanlopez/BorderedFJReduction)
+
 # BorderedFJReduction
 Symbolic engine for the Faddeev–Jackiw reduction based on geometrically constrained matrix bordering.
 
@@ -59,6 +63,23 @@ This mirrors the interpretation developed in the accompanying manuscript:
 > The Faddeev–Jackiw procedure is a geometrically constrained matrix bordering process acting on symbolic symplectic data.
 ___
 
+## 📑 Table of Contents
+
+- [Installation](#installation)
+- [Basic Usage](#basic-usage)
+- [API Summary](#api-summary)
+- [Visualization](#visualization)
+- [Future Directions](#-future-directions)
+- [Citation and DOI](#-citation-and-doi)
+- [Contributing](#contributing)
+- [License](#license)
+
+## 🔧 Minimum Requirements
+
+- Wolfram Language / Mathematica **13.0 or later**
+- Wolfram Workbench (Eclipse-based IDE) — *optional but recommended*
+- Tested on Windows, macOS, and Linux
+
 ## 🚀 Installation
 ### Option 1: Install directly from GitHub (recommended)
 
@@ -91,6 +112,9 @@ regularization status, constraint geometry, and phase-space extension of the sys
 Example shown below: Faddeev–Jackiw reduction of the Hojman–Urrutia Lagrangian
 (details omitted for clarity; see the Examples/ folder for the full definition).
 
+```mathematica
+Needs["BorderedFJReduction`"]
+```
 <p align="center">
   <img src="docs/bfjreduction.gif" alt="BorderedFJReduction basic symbolic reduction demo" width="720">
 </p>
@@ -116,6 +140,18 @@ publication-ready format:
 ```mathematica
 FJSymplecticFrame[bfj]
 ```
+
+## 🧩 API Summary
+
+The object returned by `BorderedFJMatrix` is intentionally opaque but fully queryable:
+
+- `"Constraints"` — generated constraint functions
+- `"ExtendedMatrix"` — final bordered symplectic matrix
+- `"ExtendedOneForm"` — extended canonical one-form
+- `"ExtendedSymplecticVariables"` — phase-space variables
+- `"InverseExtendedMatrix"` — generalized symplectic brackets
+- `"IterationCount"` — number of FJ iterations required for regularization
+- `"MatrixStatus"` — `"Regular"` or `"Singular"`
 
 🔎 **Notes on the example**
 
@@ -241,7 +277,7 @@ The software is intended for academic and research use, providing a transparent 
 ___
 ## 📌 Citation and DOI
 
-The **BorderedFJReduction** software is archived in Zenodo and assigned a DOI.
+If you use this software in academic work, please cite it using the following DOIs:
 
 - **Concept DOI (all versions):** https://doi.org/10.5281/zenodo.18362979  
 - **Version-specific DOI (v0.1.2 – recommended):** https://doi.org/10.5281/zenodo.18487436
