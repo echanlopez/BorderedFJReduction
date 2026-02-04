@@ -122,7 +122,7 @@ Needs["BorderedFJReduction`"]
 ```
 The following animation illustrates only the final symbolic structured output for a typical reduction.
 
-<p align="center">
+<p align="left">
   <img src="docs/bfjreduction.gif" alt="BorderedFJReduction basic symbolic reduction demo" width="720">
 </p>
 
