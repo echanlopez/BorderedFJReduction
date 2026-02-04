@@ -77,7 +77,7 @@ ___
 - [🙏 Acknowledgements](#-acknowledgements)
 - [📄 License](#-license)
 - [📌 Citation and DOI](#-citation-and-doi)
-- [📋 Development](#development)
+- [📋 Development](#-development)
 
 ## 🔧 Minimum Requirements
 
