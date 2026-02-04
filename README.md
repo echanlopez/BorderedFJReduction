@@ -250,24 +250,23 @@ The current engine targets finite-dimensional systems (point mechanics).
 However, its algebraic architecture is designed as a kernel for future extensions toward:
 
 - Field theories
-
 - Symbolic tensor calculus
-
 - Infinite-dimensional constraint surfaces
-
 - Gauge theories (Maxwell, Yang–Mills)
 
 The long-term vision is a Tensor Faddeev–Jackiw Engine, where constraint handling emerges directly from the algebraic structure of the symplectic form.
-
-### Extension to infinite-dimensional settings (remarks)
-
+**Extension to infinite-dimensional settings (remarks)**
 The algebraic logic underlying matrix bordering admits operator-theoretic generalizations.
 In particular, Schur complements have been systematically studied for bounded and
 complementable operators on Hilbert spaces, providing a mathematically consistent framework for infinite-dimensional extensions under suitable analytic hypotheses.
 
-See for example:
-- C. Băcuţa, *Schur complements on Hilbert spaces*, Journal of Computational and Applied Mathematics **231** (2009).  
-  https://www.sciencedirect.com/science/article/pii/S0377042708004305
+**References on Matrix Bordering and Schur Complements:**
+
+- G. H. Golub and C. F. Van Loan, Matrix Computations, 4th ed., Johns Hopkins University Press (2013).
+Chapter 3 discusses matrix bordering techniques and their applications in numerical linear algebra.
+- C. Băcuţa, Schur complements on Hilbert spaces, Journal of Computational and Applied Mathematics 231 (2009).
+https://www.sciencedirect.com/science/article/pii/S0377042708004305
+Provides operator-theoretic generalization relevant to infinite-dimensional extensions.
 ___
 
 ## 🙏 Acknowledgements
