@@ -128,7 +128,7 @@ The following animation illustrates only the final symbolic structured output fo
 
 🔎 **Notes on the example**
 
-- The GIF intentionally displays only the summary output, not the full input.
+- The GIF intentionally displays the full input and the summary output.
 
 - The underlying Lagrangian contains physical parameters preserved symbolically.
 
