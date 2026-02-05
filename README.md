@@ -126,14 +126,13 @@ The following animation illustrates only the final symbolic structured output fo
   <img src="docs/bfjreduction.gif" alt="BorderedFJReduction basic symbolic reduction demo" width="720">
 </p>
 
-🔎 **Notes on the example**
+🔎 **Technical notes**
 
-- The GIF intentionally displays the full input and the summary output.
+- **Input/Output shown:** The animation displays the complete Lagrangian specification alongside the reduction's structured summary.
 
-- The underlying Lagrangian contains physical parameters preserved symbolically.
+- **Parametric preservation:** Physical parameters (e.g., masses, spring constants, coupling terms) remain symbolic throughout the computation, enabling sensitivity analysis and parametric bifurcation studies without re-execution.
 
-- This reflects the package philosophy:
-structure and diagnostics first, raw expressions second.
+- **Design philosophy:** The output prioritizes *diagnostic information* (rank, iteration count, regularity status) over raw symbolic expressions, consistent with the package's emphasis on geometric structure rather than algebraic manipulation.
 
 In practice, the output of `BorderedFJMatrix` is typically assigned to a symbolic
 object. This allows direct programmatic access to the internal structures generated
