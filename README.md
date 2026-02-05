@@ -165,7 +165,8 @@ FJSymplecticFrame[bfj]
 <p align="left">
   <img src="docs/bfjreduction2.gif" alt="FJSymplecticFrame visualization demo" width="720">
 </p>
-Note: The visualization shows the extended symplectic structure with publication-ready formatting, including the inverse matrix (generalized brackets) and diagnostic information.
+
+**Note:** The visualization shows the extended symplectic structure with publication-ready formatting, including the inverse matrix (generalized brackets) and diagnostic information.
 
 ## 🧩 API Summary
 
