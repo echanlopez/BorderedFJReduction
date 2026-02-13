@@ -13,7 +13,7 @@ Matrix bordering structure of the Faddeev-Jackiw algorithm: Schur complement reg
 >
 > 
 >
-> **Project status:** The theoretical formulation and software architecture correspond to the article **"Matrix bordering structure of the Faddeev-Jackiw algorithm: Schur complement regularization and symbolic automation"** (2026), submitted to arXiv. The package is designed for analytical work on singular Lagrangians, emphasizing explicit constraint propagation and rank diagnostics via the Schur complement.
+> **Project status:** The theoretical formulation and software architecture correspond to the article **"Matrix bordering structure of the Faddeev-Jackiw algorithm: Schur complement regularization and symbolic automation"** (2026), available at [arXiv:2602.12114](https://arxiv.org/abs/2602.12114). The package is designed for analytical work on singular Lagrangians, emphasizing explicit constraint propagation and rank diagnostics via the Schur complement.
 
 ___
 
@@ -237,19 +237,19 @@ ___
 
 ## 📝 Editorial Status
 
-This paclet accompanies the manuscript
+This paclet accompanies the article:
 
 > **Matrix bordering structure of the Faddeev-Jackiw algorithm:  
 > Schur complement regularization and symbolic automation**
 
 which is currently in preparation for submission and public dissemination.
 
-The present release corresponds to a **development version** of the symbolic engine, intended to:
+The present release provides a fully functional symbolic engine designed to:
 - establish computational reproducibility,
 - provide an inspectable implementation of the theoretical results,
-- and enable early technical validation by the community.
+- and Enable automated analysis of singular Lagrangians and their constraint structures.
 
-The scientific priority of the underlying theoretical framework is fully documented in the accompanying manuscript.
+The scientific priority and the comprehensive validation of the underlying theoretical framework are fully documented in the `BorderedFJReduction_Examples.nb` notebook within the `Examples` directory.
 ___
 
 ## 👥 Authors
@@ -334,6 +334,9 @@ If you use **BorderedFJReduction** in your research, please cite the accompanyin
              Paulin Fuentes, Jorge Mauricio},
   journal = {arXiv preprint},
   year    = {2026},
+  eprint  = {2602.12114},
+  archivePrefix = {arXiv},
+  primaryClass = {math-ph},
   note    = {The Faddeev--Jackiw algorithm is formulated as a geometrically
              constrained instance of the Matrix Bordering Technique.
              A symbolic implementation is provided via the
