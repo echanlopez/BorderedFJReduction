@@ -113,14 +113,12 @@ Needs["BorderedFJReduction`"]
 ### Option 2: Local installation (development)
 
 ```mathematica
-PacletInstall["/path/to/BorderedFJReduction-0.1.1.paclet"]
+PacletInstall["/path/to/BorderedFJReduction-0.1.2.paclet"]
 ```
 
 > **Note:** Release v0.1.2 supersedes earlier archived versions and corrects
 > a paclet packaging issue (context isolation and symbol leakage),
 > without modifying the underlying algorithm or mathematical formulation.
-> The distributed paclet corresponds to version 0.1.1 of the computational engine.
-___
 
 ## 🧪 Basic Usage
 
@@ -352,7 +350,7 @@ If you use **BorderedFJReduction** in your research, please cite the accompanyin
                Cabrera, Jaime Manuel and
                Paulin Fuentes, Jorge Mauricio},
   title     = {BorderedFJReduction: A Symbolic Engine for the Faddeev-Jackiw reduction as constrained matrix bordering},
-  version   = {0.1.1},
+  version   = {0.1.2},
   year      = {2026},
   publisher = {Zenodo},
   doi       = {10.5281/zenodo.18362980},
