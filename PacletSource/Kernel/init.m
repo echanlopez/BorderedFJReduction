@@ -65,7 +65,7 @@ With[
 						Alignment -> Center, Spacings -> 0.3
 					],
 					Row @ {
-						Style["v0.1.0  |  Development Build | ", 10, GrayLevel @ 0.6],
+						Style["v0.1.2  |  Development Build | ", 10, GrayLevel @ 0.6],
 						Style[
 							StringJoin["Mathematica ", ToString @ $VersionNumber, "  |  "],
 							10, GrayLevel @ 0.6
