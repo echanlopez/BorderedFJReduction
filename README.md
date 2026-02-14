@@ -101,7 +101,7 @@ ___
 
 ```mathematica
 PacletInstall[
-  "https://github.com/echanlopez/BorderedFJReduction/releases/download/v0.1.2/BorderedFJReduction-0.1.1.paclet",
+  "https://github.com/echanlopez/BorderedFJReduction/releases/download/v0.1.2/BorderedFJReduction-0.1.2.paclet",
   ForceVersionInstall -> True
 ]
 ```
