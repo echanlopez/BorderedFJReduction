@@ -35,6 +35,7 @@ f^{(m)} = \begin{pmatrix} f^{(0)} & B \\ -B^{\top} & 0 \end{pmatrix},
 $$
 
 where 
+
 $$
 B_{j\alpha}
 =
