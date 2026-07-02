@@ -38,9 +38,9 @@ where
 
 $$
 B_{j\alpha}
-=
-\frac{\partial\Omega_\alpha}{\partial\xi^j}.
+=\frac{\partial\Omega_\alpha}{\partial\xi^j}.
 $$
+
 Here, the bordering block $B$ collects the gradients of the consistency constraints $\Omega_\alpha$. Since $f^{(0)}$ is singular, its inverse — and hence any determinantal identity that presupposes an invertible anchor — is unavailable. Regularity is instead controlled by how $B$ couples to $\ker(f^{(0)})$.
 
 Let the columns of $N \in \mathbb{R}^{n\times d}$ be an orthonormal basis of $\ker(f^{(0)})$, with $d = \dim\ker(f^{(0)})$, and define the **reduced constraint matrix**
