@@ -30,36 +30,36 @@ The engine returns an opaque symbolic object encapsulating the complete symplect
 
 For a first-order Lagrangian $L = a_i(\xi)\,\dot\xi^{\,i} - V(\xi)$ with singular pre-symplectic two-form $f^{(0)}_{ij} = \partial_i a_j - \partial_j a_i$, each iteration of the Barcelos–Neto–Wotzasek algorithm produces an antisymmetric **bordered** matrix
 
-$$
+```math
 f^{(m)} = \begin{pmatrix} f^{(0)} & B \\ -B^{\top} & 0 \end{pmatrix},
 \qquad B_{j\alpha} = \frac{\partial \Omega_\alpha}{\partial \xi^{j}},
-$$
+```
 
 where the bordering block $B$ collects the gradients of the consistency constraints $\Omega_\alpha$. Since $f^{(0)}$ is singular, its inverse — and hence any determinantal identity that presupposes an invertible anchor — is unavailable. Regularity is instead controlled by how $B$ couples to $\ker(f^{(0)})$.
 
 Let the columns of $N \in \mathbb{R}^{n\times d}$ be an orthonormal basis of $\ker(f^{(0)})$, with $d = \dim\ker(f^{(0)})$, and define the **reduced constraint matrix**
 
-$$
-\Gamma = N^{\top} B \in \mathbb{R}^{d\times k}, \qquad \Gamma_{a\alpha} = N_a^{i}\,\partial_i \Omega_\alpha .
-$$
+```math
+\Gamma = N^{\top} B \in \mathbb{R}^{d\times k}, \qquad \Gamma_{a\alpha} = N_a^{\,i}\,\partial_i \Omega_\alpha .
+```
 
 Eliminating the invertible symplectic core of $f^{(0)}$ by an orthogonal congruence yields the **exact determinant factorization**
 
-$$
-\det\big(f^{(m)}\big) = \Big(\prod_{\ell} \mu_\ell^{2}\Big)\,\det(\Gamma)^2, \qquad \mu_\ell > 0,
-$$
+```math
+\det\!\big(f^{(m)}\big) = \Big(\prod_{\ell} \mu_\ell^{2}\Big)\,\det(\Gamma)^2, \qquad \mu_\ell > 0,
+```
 
 where the $\mu_\ell$ are the Pfaffian factors of the nonsingular block of $f^{(0)}$. Because the prefactor is strictly positive, the extended matrix is regular **if and only if** the number of independent generated constraints equals $d$ and $\Gamma$ is nonsingular:
 
-$$
-\det\big(f^{(m)}\big) \neq 0 \iff k = d \ \text{ and }\ \det(\Gamma) \neq 0 .
-$$
+```math
+\det\!\big(f^{(m)}\big) \neq 0 \iff k = d \ \text{ and }\ \det(\Gamma) \neq 0 .
+```
 
 The central algebraic result is the **kernel–Poisson identity**: when the constraints arise from the consistency condition, the reduced matrix equals, coefficient by coefficient, the Hessian of the symplectic potential restricted to the null space,
 
-$$
-\Gamma_{\alpha\beta} = N_\alpha^{i}\,\big(\partial_i\partial_j V\big)N_\beta^{j} = \{\Omega_\alpha,\Omega_\beta\}_{\mathrm{FJ}},
-$$
+```math
+\Gamma_{\alpha\beta} = N_\alpha^{\,i}\,\big(\partial_i\partial_j V\big)\,N_\beta^{\,j} = \{\Omega_\alpha,\Omega_\beta\}_{\mathrm{FJ}},
+```
 
 which is precisely the constraint matrix whose nondegeneracy characterizes a second-class system in the Dirac–Bergmann sense. This is an **exact matrix equality** — not an isomorphism, a congruence, or a relation valid only on the constraint surface.
 
