@@ -32,21 +32,15 @@ For a first-order Lagrangian $L = a_i(\xi)\,\dot\xi^{\,i} - V(\xi)$ with singula
 
 $$
 f^{(m)} = \begin{pmatrix} f^{(0)} & B \\ -B^{\top} & 0 \end{pmatrix},
+\qquad B_{j\alpha} = \frac{\partial \Omega_\alpha}{\partial \xi^{j}},
 $$
 
-where 
-
-$$
-B_{j\alpha}
-=\frac{\partial\Omega_\alpha}{\partial\xi^j}.
-$$
-
-Here, the bordering block $B$ collects the gradients of the consistency constraints $\Omega_\alpha$. Since $f^{(0)}$ is singular, its inverse — and hence any determinantal identity that presupposes an invertible anchor — is unavailable. Regularity is instead controlled by how $B$ couples to $\ker(f^{(0)})$.
+where the bordering block $B$ collects the gradients of the consistency constraints $\Omega_\alpha$. Since $f^{(0)}$ is singular, its inverse — and hence any determinantal identity that presupposes an invertible anchor — is unavailable. Regularity is instead controlled by how $B$ couples to $\ker(f^{(0)})$.
 
 Let the columns of $N \in \mathbb{R}^{n\times d}$ be an orthonormal basis of $\ker(f^{(0)})$, with $d = \dim\ker(f^{(0)})$, and define the **reduced constraint matrix**
 
 $$
-\Gamma = N^{\top} B \in \mathbb{R}^{d\times k}, \qquad \Gamma_{a\alpha} = N_a^{i}\partial_i \Omega_\alpha .
+\Gamma = N^{\top} B \in \mathbb{R}^{d\times k}, \qquad \Gamma_{a\alpha} = N_a^{i}\,\partial_i \Omega_\alpha .
 $$
 
 Eliminating the invertible symplectic core of $f^{(0)}$ by an orthogonal congruence yields the **exact determinant factorization**
@@ -64,7 +58,7 @@ $$
 The central algebraic result is the **kernel–Poisson identity**: when the constraints arise from the consistency condition, the reduced matrix equals, coefficient by coefficient, the Hessian of the symplectic potential restricted to the null space,
 
 $$
-\Gamma_{\alpha\beta} = N_\alpha^{i}\big(\partial_i\partial_j V\big)N_\beta^{j} = \{\Omega_\alpha,\Omega_\beta\}_{\mathrm{FJ}},
+\Gamma_{\alpha\beta} = N_\alpha^{i}\,\big(\partial_i\partial_j V\big)N_\beta^{j} = \{\Omega_\alpha,\Omega_\beta\}_{\mathrm{FJ}},
 $$
 
 which is precisely the constraint matrix whose nondegeneracy characterizes a second-class system in the Dirac–Bergmann sense. This is an **exact matrix equality** — not an isomorphism, a congruence, or a relation valid only on the constraint surface.
