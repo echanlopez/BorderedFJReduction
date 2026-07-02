@@ -3,22 +3,18 @@
 ![Release](https://img.shields.io/github/v/release/echanlopez/BorderedFJReduction)
 
 # BorderedFJReduction
-Matrix bordering structure of the Faddeev-Jackiw algorithm: Schur complement regularization and symbolic automation.
+Matrix bordering structure of the Faddeev-Jackiw algorithm: kernel reduction and symbolic automation.
 
-> **BorderedFJReduction** is a symbolic computational engine that formalizes the Faddeev–Jackiw (FJ) reduction as a geometrically constrained instance of the **Matrix Bordering Technique (MBT)**.
+> **BorderedFJReduction** is a symbolic computational engine that formalizes the Faddeev–Jackiw (FJ) reduction of singular Lagrangian systems as a geometrically constrained instance of the **Matrix Bordering Technique (MBT)**.
 >
-> 
+> Each consistency step of the Barcelos–Neto–Wotzasek algorithm is realized as a bordering of the pre-symplectic matrix. Because the pre-symplectic form is singular by hypothesis, the regularity of the resulting extended matrix is decided not by any inverse of that matrix, but by the **reduction to its null space**: the *reduced constraint matrix* $\Gamma = N^{\top} B$, built from the pairing of the constraint gradients with a basis $N$ of $\ker(f^{(0)})$, controls termination through an exact determinant factorization and coincides, coefficient by coefficient, with the Faddeev–Jackiw constraint algebra.
 >
-> Unlike traditional procedural implementations, this package employs **Schur complement regularization** to handle the singular pre-symplectic matrix, establishing a direct algebraic isomorphism with the Poisson bracket algebra of the system's constraints.
->
-> 
->
-> **Project status:** The theoretical formulation and software architecture correspond to the article **"Matrix bordering structure of the Faddeev-Jackiw algorithm: Schur complement regularization and symbolic automation"** (2026), available at [arXiv:2602.12114](https://arxiv.org/abs/2602.12114). The package is designed for analytical work on singular Lagrangians, emphasizing explicit constraint propagation and rank diagnostics via the Schur complement.
+> **Project status:** The theoretical formulation and software architecture correspond to the article **"Matrix bordering structure of the Faddeev-Jackiw algorithm: kernel reduction and symbolic automation"** (2026), available at [arXiv:2602.12114](https://arxiv.org/abs/2602.12114). The package is designed for analytical work on singular Lagrangians, emphasizing explicit constraint propagation and regularity diagnostics via null-space reduction and the reduced constraint matrix.
 
 ___
 
 ## 📦 BorderedFJReduction
-<p align="center"> <img src="assets/bfred_logo.png" alt="BorderedFJReduction logo" width="600"/> </p> <p align="left"> <b>Conceptual flow of the bordered Faddeev–Jackiw reduction, highlighting constraint propagation, rank diagnostics, and gauge symmetry detection.</b> </p>
+<p align="center"> <img src="assets/bfred_logo.png" alt="BorderedFJReduction logo" width="600"/> </p> <p align="left"> <b>Conceptual flow of the bordered Faddeev–Jackiw reduction, highlighting constraint propagation, null-space coupling, and gauge symmetry detection.</b> </p>
 
 ___
 
@@ -26,20 +22,54 @@ ___
 
 BorderedFJReduction is a Wolfram Language paclet that provides a fully symbolic implementation of the Faddeev–Jackiw (FJ) reduction for singular Lagrangian systems.
 
-The core contribution of this project is the realization that the FJ iterative extension of phase space is not a heuristic procedure, but a geometrically constrained instance of the Matrix Bordering Technique (MBT).
-This insight enables a deterministic, transparent, and automatable reduction process, preserving full parametric dependence throughout the computation.
+The core contribution of this project is the realization that the FJ iterative extension of phase space is not a heuristic procedure, but a **geometrically constrained instance of the Matrix Bordering Technique (MBT)**, whose termination is governed by the reduction of the bordered matrix to the null space of the pre-symplectic form. This insight enables a deterministic, transparent, and automatable reduction process, preserving full parametric dependence throughout the computation.
 
 The engine returns an opaque symbolic object encapsulating the complete symplectic hierarchy, while exposing its internal structure through a controlled, queryable interface.
 
 ### Mathematical Foundation
 
-The engine is built upon the proof that each iteration of the Barcelos-Neto-Wotzasek algorithm generates an extended matrix whose non-degeneracy is governed by the **Schur complement**. The package automates:
+For a first-order Lagrangian $L = a_i(\xi)\,\dot\xi^{\,i} - V(\xi)$ with singular pre-symplectic two-form $f^{(0)}_{ij} = \partial_i a_j - \partial_j a_i$, each iteration of the Barcelos–Neto–Wotzasek algorithm produces an antisymmetric **bordered** matrix
 
-* **Isomorphism Identification:** Links the invertibility of the extended matrix directly to the second-class structure of the constraints.
-* **Symbolic Regularization:** Implements matrix bordering to resolve phase-space singularities without manual intervention.
-* **Gauge Diagnostics:** Automatically detects first-class constraints and redundancies within the symmetry algebra.
+$$
+f^{(m)} = \begin{pmatrix} f^{(0)} & B \\ -B^{\top} & 0 \end{pmatrix},
+\qquad B_{j\alpha} = \frac{\partial \Omega_\alpha}{\partial \xi^{j}},
+$$
 
-> *The workflow replaces the manual iterative process with an algebraic evaluation of the bordering structure, ensuring the algorithm terminates if and only if the system is second-class.*
+where the bordering block $B$ collects the gradients of the consistency constraints $\Omega_\alpha$. Since $f^{(0)}$ is singular, its inverse — and hence any determinantal identity that presupposes an invertible anchor — is unavailable. Regularity is instead controlled by how $B$ couples to $\ker(f^{(0)})$.
+
+Let the columns of $N \in \mathbb{R}^{n\times d}$ be an orthonormal basis of $\ker(f^{(0)})$, with $d = \dim\ker(f^{(0)})$, and define the **reduced constraint matrix**
+
+$$
+\Gamma = N^{\top} B \in \mathbb{R}^{d\times k}, \qquad \Gamma_{a\alpha} = N_a^{\,i}\,\partial_i \Omega_\alpha .
+$$
+
+Eliminating the invertible symplectic core of $f^{(0)}$ by an orthogonal congruence yields the **exact determinant factorization**
+
+$$
+\det\!\big(f^{(m)}\big) = \Big(\prod_{\ell} \mu_\ell^{2}\Big)\,\det(\Gamma)^2, \qquad \mu_\ell > 0,
+$$
+
+where the $\mu_\ell$ are the Pfaffian factors of the nonsingular block of $f^{(0)}$. Because the prefactor is strictly positive, the extended matrix is regular **if and only if** the number of independent generated constraints equals $d$ and $\Gamma$ is nonsingular:
+
+$$
+\det\!\big(f^{(m)}\big) \neq 0 \iff k = d \ \text{ and }\ \det(\Gamma) \neq 0 .
+$$
+
+The central algebraic result is the **kernel–Poisson identity**: when the constraints arise from the consistency condition, the reduced matrix equals, coefficient by coefficient, the Hessian of the symplectic potential restricted to the null space,
+
+$$
+\Gamma_{\alpha\beta} = N_\alpha^{\,i}\,\big(\partial_i\partial_j V\big)\,N_\beta^{\,j} = \{\Omega_\alpha,\Omega_\beta\}_{\mathrm{FJ}},
+$$
+
+which is precisely the constraint matrix whose nondegeneracy characterizes a second-class system in the Dirac–Bergmann sense. This is an **exact matrix equality** — not an isomorphism, a congruence, or a relation valid only on the constraint surface.
+
+The package automates the corresponding workflow:
+
+* **Kernel reduction:** computes $\ker(f^{(0)})$ and the reduced constraint matrix $\Gamma = N^{\top}B$ that governs regularity.
+* **Exact correspondence:** links the regularity of the bordered matrix directly to the second-class structure of the constraints through the kernel–Poisson identity.
+* **Gauge diagnostics:** exposes the surviving null generators when the reduction halts with a residual kernel (first-class / gauge content).
+
+> *Under the assumption that the generated constraints are independent and the consistency algorithm has been run to exhaustion, the Faddeev–Jackiw reduction terminates in a nondegenerate symplectic form if and only if $\Gamma$ is nonsingular, i.e. the system is second-class.*
 
 -----
 
@@ -47,11 +77,12 @@ The engine is built upon the proof that each iteration of the Barcelos-Neto-Wotz
 
 - Fully symbolic implementation of the Faddeev–Jackiw reduction
 - Theorem-driven formulation based on the Matrix Bordering Technique (not a procedural algorithm)
+- **Kernel (null-space) reduction** of singular pre-symplectic matrices via the reduced constraint matrix $\Gamma = N^{\top}B$
+- Regularity governed by the exact determinant factorization $\det(f^{(m)}) = \big(\prod_\ell \mu_\ell^2\big)\det(\Gamma)^2$
 - Automatic detection and classification of:
   - Regular symplectic manifolds
   - Constraint hierarchies generated by consistency conditions
   - Gauge symmetries, including null and linearly dependent constraints
-- Schur complement–based regularization of singular pre-symplectic matrices
 - Exact preservation of parametric dependence throughout the reduction process
    (essential for bifurcation, stability, and structural analysis)
 - Structured symbolic output encapsulated in a Wolfram `SummaryBox`
@@ -66,12 +97,12 @@ ___
 
 ## 📐 Conceptual Architecture
 
-The reduction process is internally organized as a causal graph of symbolic states, rather than a linear algorithm.
-Each iteration corresponds to a bordered extension of the symplectic 2-form until regularity or gauge redundancy is detected.
+The reduction process is internally organized as a **directed dependency graph** of symbolic states, rather than a linear algorithm.
+Each iteration corresponds to a bordered extension of the symplectic 2-form until regularity or a residual kernel (gauge redundancy) is detected.
 
-This mirrors the interpretation developed in the accompanying manuscript:
+This mirrors the interpretation developed in the accompanying manuscript, where such graphs are called *causal* only in the rewriting-system sense of the Wolfram Physics Project:
 
-> The Faddeev–Jackiw procedure is a geometrically constrained matrix bordering process acting on symbolic symplectic data.
+> The Faddeev–Jackiw procedure is a geometrically constrained matrix bordering process acting on symbolic symplectic data, whose termination is decided by the reduction to the null space of the pre-symplectic form.
 ___
 
 ## 📑 Table of Contents
@@ -165,6 +196,14 @@ bfj["IterationCount"]
 bfj["MatrixStatus"]
 ```
 
+Here `"MatrixStatus"` reports the outcome of the regularity criterion
+$\det(f^{(m)}) \neq 0 \iff \det(\Gamma) \neq 0$: it returns `"Regular"` when the
+reduced constraint matrix is nonsingular (a second-class system) and `"Singular"`
+when a residual kernel survives (first-class / gauge content). The generated
+`"Constraints"` are the functions $\Omega_\alpha$ whose gradients form the
+bordering block $B$, and `"InverseExtendedMatrix"` returns the generalized
+symplectic brackets of the regularized theory.
+
 To visualize the generalized symplectic brackets in a structured,
 publication-ready format:
 
@@ -182,24 +221,24 @@ FJSymplecticFrame[bfj]
 
 The object returned by `BorderedFJMatrix` is intentionally opaque but fully queryable:
 
-- `"Constraints"` — generated constraint functions
-- `"ExtendedMatrix"` — final bordered symplectic matrix
+- `"Constraints"` — generated constraint functions $\Omega_\alpha$
+- `"ExtendedMatrix"` — final bordered symplectic matrix $f^{(m)}$
 - `"ExtendedOneForm"` — extended canonical one-form
-- `"ExtendedSymplecticVariables"` — phase-space variables
+- `"ExtendedSymplecticVariables"` — augmented phase-space variables (including Lagrange multipliers)
 - `"InverseExtendedMatrix"` — generalized symplectic brackets
 - `"IterationCount"` — number of FJ iterations required for regularization
-- `"MatrixStatus"` — `"Regular"` or `"Singular"`
+- `"MatrixStatus"` — `"Regular"` (nonsingular $\Gamma$) or `"Singular"` (residual kernel)
 ___
 
 ## 🧭 Gauge Symmetry Detection
 
-If the reduction fails to reach a regular symplectic manifold, the engine automatically diagnoses gauge redundancy:
+If the reduction halts with a residual kernel — i.e. $\det(\Gamma) = 0$ — the extended matrix is not regularized and the engine reports the two structural signatures that produce this outcome:
 
-- **Null constraints** (identically zero)
+- **Null constraints** (the consistency condition is satisfied identically)
 
-- **Dependent constraints** (no further restriction of phase space)
+- **Dependent constraints** (new constraints do not restrict the phase space further)
 
-In such cases, the final pre-symplectic matrix and its null vectors are preserved, providing direct access to the generators of gauge transformations.
+In such cases the final pre-symplectic matrix and its null vectors are preserved, exposing the **candidate generators** of the gauge transformations. A residual kernel is a *necessary* signature of first-class constraints; confirming a genuine gauge symmetry additionally requires that the surviving null modes $v$ satisfy $v^{i}\partial_i V = 0$ (otherwise the halt reflects an inconsistent system rather than a gauge one). The engine therefore exposes the candidate generators and leaves the physical confirmation to the user.
 
 ___
 
@@ -210,16 +249,14 @@ The theoretical foundation of this package is rooted in the geometric formulatio
 
 The full iterative power of the method was developed by Barcelos-Neto and Wotzasek, who established a systematic procedure for extending the phase space until either a regular symplectic manifold or a gauge symmetry is revealed.
 
-From a linear algebra perspective, the present implementation makes explicit the connection between the Faddeev–Jackiw iteration and the Matrix Bordering Technique, a classical tool in numerical analysis and bifurcation theory for handling rank-deficient operators and structured singularities.
+From a linear-algebra perspective, the present implementation makes explicit the connection between the Faddeev–Jackiw iteration and the Matrix Bordering Technique, a classical tool in numerical analysis and bifurcation theory for handling rank-deficient operators and structured singularities. The specific contribution here is to show that, for the singular anchor of a pre-symplectic form, regularity is decided by the reduction to the null space: the reduced constraint matrix $\Gamma = N^{\top}B$ factorizes the determinant of the bordered matrix and coincides exactly with the Faddeev–Jackiw constraint algebra.
 
-Recent developments in computational and algorithmic physics have emphasized the role of symbolic rewriting systems and causal structures in the formulation of physical laws. In this spirit, **BorderedFJReduction** treats constrained dynamics as a deterministic transformation of symbolic states, rather than as a procedural manipulation of equations.
-
-As a result, the package complements existing symbolic approaches to constrained systems and is particularly well suited for studies where parametric dependence, bifurcation structure, and exact constraint algebra play a central role.
+Compared with procedural computer-algebra treatments — which typically carry explicit time dependencies $q_i(t)$ and re-derive the constraint hierarchy at each step — the present engine adopts a declarative, association-based design: the physical system is a static specification of structural data, phase-space coordinates are atomic symbols, and the reduction is a deterministic transformation of symbolic states. This preserves parametric dependence exactly and keeps the focus on the algebraic structure of the constraints.
 
 This package accompanies the theoretical development presented in:
 
 > **Matrix bordering structure of the Faddeev-Jackiw algorithm:  
-> Schur complement regularization and symbolic automation**
+> kernel reduction and symbolic automation**
 
 The implementation has been validated on:
 
@@ -238,14 +275,14 @@ ___
 This paclet accompanies the article:
 
 > **Matrix bordering structure of the Faddeev-Jackiw algorithm:  
-> Schur complement regularization and symbolic automation**
+> kernel reduction and symbolic automation**
 
-which is currently in preparation for submission and public dissemination.
+which is currently under peer review.
 
 The present release provides a fully functional symbolic engine designed to:
 - establish computational reproducibility,
 - provide an inspectable implementation of the theoretical results,
-- and Enable automated analysis of singular Lagrangians and their constraint structures.
+- and enable automated analysis of singular Lagrangians and their constraint structures.
 
 The scientific priority and the comprehensive validation of the underlying theoretical framework are fully documented in the `BorderedFJReduction_Examples.nb` notebook within the `Examples` directory.
 ___
@@ -273,22 +310,26 @@ However, its algebraic architecture is designed as a kernel for future extension
 - Gauge theories (Maxwell, Yang–Mills)
 
 The long-term vision is a Tensor Faddeev–Jackiw Engine, where constraint handling emerges directly from the algebraic structure of the symplectic form.
-### **Extension to infinite-dimensional settings (remarks)**
-The algebraic logic underlying matrix bordering admits operator-theoretic generalizations.
-In particular, Schur complements have been systematically studied for bounded and
-complementable operators on Hilbert spaces, providing a mathematically consistent framework for infinite-dimensional extensions under suitable analytic hypotheses.
 
-**References on Matrix Bordering and Schur Complements:**
+### **Extension to infinite-dimensional settings (remarks)**
+The algebraic logic underlying matrix bordering and kernel reduction admits operator-theoretic generalizations.
+In the transition to continuum systems, the finite-dimensional pre-symplectic matrices are replaced by integro-differential operators and the null-space reduction lifts to the corresponding operator setting. Bordered and reduced-operator constructions of this kind have been systematically studied for bounded and complementable operators on Hilbert spaces, providing a mathematically consistent backdrop for infinite-dimensional extensions under suitable analytic hypotheses.
+
+**References on Matrix Bordering and reduced-operator constructions:**
 
 - G. H. Golub and C. F. Van Loan, *Matrix Computations*, 4th ed., 
   Johns Hopkins University Press (2013).  
   Chapter 3 discusses matrix bordering techniques and their applications 
   in numerical linear algebra.
 
-- C. Băcuţa, *Schur complements on Hilbert spaces*, 
+- A. Galántai, *Rank reduction and bordered inversion*, 
+  Linear Algebra and its Applications **336** (2001), 97–104.  
+  Rank-reduction framework for bordered matrices underlying the determinant factorization.
+
+- C. Băcuţă, *Schur complements on Hilbert spaces*, 
   Journal of Computational and Applied Mathematics **231** (2009).  
   https://www.sciencedirect.com/science/article/pii/S0377042708004305  
-  Provides operator-theoretic generalization relevant to infinite-dimensional extensions.
+  Operator-theoretic backdrop relevant to infinite-dimensional extensions.
 ___
 
 ## 🙏 Acknowledgements
@@ -325,7 +366,7 @@ If you use **BorderedFJReduction** in your research, please cite the accompanyin
 ```bibtex
 @article{ChanMartinBorderedFJReduction,
   title   = {Matrix bordering structure of the Faddeev--Jackiw algorithm: 
-             Schur complement regularization and symbolic automation},
+             kernel reduction and symbolic automation},
   author  = {Chan--L{\'o}pez, E. and
              Mart{\'\i}n--Ruiz, A. and
              Cabrera, Jaime Manuel and
@@ -336,7 +377,10 @@ If you use **BorderedFJReduction** in your research, please cite the accompanyin
   archivePrefix = {arXiv},
   primaryClass = {math-ph},
   note    = {The Faddeev--Jackiw algorithm is formulated as a geometrically
-             constrained instance of the Matrix Bordering Technique.
+             constrained instance of the Matrix Bordering Technique, whose
+             regularity is governed by kernel reduction: the reduced constraint
+             matrix Gamma = N^T B factorizes the determinant of the bordered
+             matrix and coincides with the Faddeev--Jackiw constraint algebra.
              A symbolic implementation is provided via the
              \texttt{BorderedFJReduction} Wolfram Language Paclet.}
 }
