@@ -9,7 +9,7 @@ Matrix bordering structure of the Faddeev-Jackiw algorithm: kernel reduction and
 >
 > Each consistency step of the Barcelos–Neto–Wotzasek algorithm is realized as a bordering of the pre-symplectic matrix. Because the pre-symplectic form is singular by hypothesis, the regularity of the resulting extended matrix is decided not by any inverse of that matrix, but by the **reduction to its null space**: the *reduced constraint matrix* $\Gamma = N^{\top} B$, built from the pairing of the constraint gradients with a basis $N$ of $\ker(f^{(0)})$, controls termination through an exact determinant factorization and coincides, coefficient by coefficient, with the Faddeev–Jackiw constraint algebra.
 >
-> **Project status:** The theoretical formulation and software architecture correspond to the article **"Matrix bordering structure of the Faddeev-Jackiw algorithm: kernel reduction and symbolic automation"** (2026), available at [arXiv:2602.12114](https://arxiv.org/abs/2602.12114). The package is designed for analytical work on singular Lagrangians, emphasizing explicit constraint propagation and regularity diagnostics via null-space reduction and the reduced constraint matrix.
+> **Project status:** *Published.* The theoretical formulation and software architecture correspond to the article **"Matrix bordering structure of the Faddeev–Jackiw algorithm: kernel reduction and symbolic automation"**, E. Chan–López, A. Martín–Ruiz, J. M. Cabrera and J. M. Paulin Fuentes, *The European Physical Journal Plus* **141**, 932 (2026), published open access on 14 August 2026, [doi:10.1140/epjp/s13360-026-08146-x](https://doi.org/10.1140/epjp/s13360-026-08146-x). An earlier version of the manuscript remains available as a preprint at [arXiv:2602.12114](https://arxiv.org/abs/2602.12114). The package is designed for analytical work on singular Lagrangians, emphasizing explicit constraint propagation and regularity diagnostics via null-space reduction and the reduced constraint matrix.
 
 ___
 
@@ -100,7 +100,7 @@ ___
 The reduction process is internally organized as a **directed dependency graph** of symbolic states, rather than a linear algorithm.
 Each iteration corresponds to a bordered extension of the symplectic 2-form until regularity or a residual kernel (gauge redundancy) is detected.
 
-This mirrors the interpretation developed in the accompanying manuscript, where such graphs are called *causal* only in the rewriting-system sense of the Wolfram Physics Project:
+This mirrors the interpretation developed in Sect. 3.1 of the published article, where such graphs are called *causal* only in the rewriting-system sense of the Wolfram Physics Project:
 
 > The Faddeev–Jackiw procedure is a geometrically constrained matrix bordering process acting on symbolic symplectic data, whose termination is decided by the reduction to the null space of the pre-symplectic form.
 ___
@@ -113,7 +113,7 @@ ___
 - [🧩 API Summary](#-api-summary)
 - [🧭 Gauge Symmetry Detection](#-gauge-symmetry-detection)
 - [📚 Scientific Context and Related Work](#-scientific-context-and-related-work)
-- [📝 Editorial Status](#-editorial-status)
+- [📖 Publication](#-publication)
 - [👥 Authors](#-authors)
 - [🔮 Future Directions](#-future-directions)
 - [🙏 Acknowledgements](#-acknowledgements)
@@ -255,8 +255,11 @@ Compared with procedural computer-algebra treatments — which typically carry e
 
 This package accompanies the theoretical development presented in:
 
-> **Matrix bordering structure of the Faddeev-Jackiw algorithm:  
-> kernel reduction and symbolic automation**
+> **Matrix bordering structure of the Faddeev–Jackiw algorithm:  
+> kernel reduction and symbolic automation**  
+> E. Chan–López, A. Martín–Ruiz, J. M. Cabrera and J. M. Paulin Fuentes,  
+> *Eur. Phys. J. Plus* **141**, 932 (2026).  
+> [doi:10.1140/epjp/s13360-026-08146-x](https://doi.org/10.1140/epjp/s13360-026-08146-x)
 
 The implementation has been validated on:
 
@@ -270,21 +273,27 @@ The implementation has been validated on:
 
 ___
 
-## 📝 Editorial Status
+## 📖 Publication
 
-This paclet accompanies the article:
+**Published article:**
 
-> **Matrix bordering structure of the Faddeev-Jackiw algorithm:  
-> kernel reduction and symbolic automation**
+> **Matrix bordering structure of the Faddeev–Jackiw algorithm:  
+> kernel reduction and symbolic automation**  
+> E. Chan–López, A. Martín–Ruiz, J. M. Cabrera and J. M. Paulin Fuentes,  
+> *Eur. Phys. J. Plus* **141**, 932 (2026). Open access.  
+> [doi:10.1140/epjp/s13360-026-08146-x](https://doi.org/10.1140/epjp/s13360-026-08146-x)
 
-which is currently under peer review.
+**Preprint (earlier version):**
+
+> [arXiv:2602.12114](https://arxiv.org/abs/2602.12114) [math-ph], submitted 12 February 2026.  
+> Superseded by the published article above.
 
 The present release provides a fully functional symbolic engine designed to:
 - establish computational reproducibility,
 - provide an inspectable implementation of the theoretical results,
 - and enable automated analysis of singular Lagrangians and their constraint structures.
 
-The scientific priority and the comprehensive validation of the underlying theoretical framework are fully documented in the `BorderedFJReduction_Examples.nb` notebook within the `Examples` directory.
+The theoretical framework, its proofs and its validation benchmarks are established in the published article; their computational counterpart — the executable reproduction of every reported reduction — is documented in the `BorderedFJReduction_Examples.nb` notebook within the `Examples` directory.
 ___
 
 ## 👥 Authors
@@ -346,43 +355,39 @@ ___
 
 This project is released under the MIT License.
 
-The software is intended for academic and research use, providing a transparent and reproducible implementation of the methods described in the accompanying manuscript.
+The software is intended for academic and research use, providing a transparent and reproducible implementation of the methods described in the published article.
 
 ___
 ## 📌 Citation and DOI
 
-If you use this software in academic work, please cite it using the following DOIs:
+If you use this software in academic work, please cite both the article and the archived software release, using the following DOIs:
 
-- **Concept DOI (all versions):** https://doi.org/10.5281/zenodo.18362979  
+- **Article DOI (Eur. Phys. J. Plus 141, 932 (2026)):** https://doi.org/10.1140/epjp/s13360-026-08146-x  
+- **Concept DOI (all software versions):** https://doi.org/10.5281/zenodo.18362979  
 - **Version-specific DOI (v0.1.2 – recommended):** https://doi.org/10.5281/zenodo.18487436
 ___
 
 ## BibTeX Citation
 
-If you use **BorderedFJReduction** in your research, please cite the accompanying work:
+If you use **BorderedFJReduction** in your research, please cite the published article and, where the specific release matters, the archived software:
 
 ### Article
 
 ```bibtex
 @article{ChanMartinBorderedFJReduction,
-  title   = {Matrix bordering structure of the Faddeev--Jackiw algorithm: 
+  title   = {Matrix bordering structure of the Faddeev--Jackiw algorithm:
              kernel reduction and symbolic automation},
   author  = {Chan--L{\'o}pez, E. and
              Mart{\'\i}n--Ruiz, A. and
              Cabrera, Jaime Manuel and
              Paulin Fuentes, Jorge Mauricio},
-  journal = {arXiv preprint},
+  journal = {The European Physical Journal Plus},
+  volume  = {141},
+  pages   = {932},
   year    = {2026},
-  eprint  = {2602.12114},
-  archivePrefix = {arXiv},
-  primaryClass = {math-ph},
-  note    = {The Faddeev--Jackiw algorithm is formulated as a geometrically
-             constrained instance of the Matrix Bordering Technique, whose
-             regularity is governed by kernel reduction: the reduced constraint
-             matrix Gamma = N^T B factorizes the determinant of the bordered
-             matrix and coincides with the Faddeev--Jackiw constraint algebra.
-             A symbolic implementation is provided via the
-             \texttt{BorderedFJReduction} Wolfram Language Paclet.}
+  issn    = {2190-5444},
+  publisher = {Springer Berlin Heidelberg},
+  doi     = {10.1140/epjp/s13360-026-08146-x}
 }
 ```
 ### Software
@@ -397,7 +402,7 @@ If you use **BorderedFJReduction** in your research, please cite the accompanyin
   version   = {0.1.2},
   year      = {2026},
   publisher = {Zenodo},
-  doi       = {10.5281/zenodo.18362980},
+  doi       = {10.5281/zenodo.18487436},
   url       = {https://github.com/echanlopez/BorderedFJReduction}
 }
 ```
