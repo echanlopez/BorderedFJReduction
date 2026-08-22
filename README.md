@@ -114,7 +114,7 @@ ___
 - [🧭 Gauge Symmetry Detection](#-gauge-symmetry-detection)
 - [📚 Scientific Context and Related Work](#-scientific-context-and-related-work)
 - [📖 Publication](#-publication)
-- [👥 Authors](#-authors)
+- 👥 [Authors' Contributions Statement](#authors-contributions-statement)
 - [🔮 Future Directions](#-future-directions)
 - [🙏 Acknowledgements](#-acknowledgements)
 - [📄 License](#-license)
@@ -391,11 +391,8 @@ If you use **BorderedFJReduction** in your research, please cite the published a
 
 ```bibtex
 @software{ChanLopez_BorderedFJReduction_2026,
-  author    = {Chan--L{\'o}pez, E. and
-               Mart{\'\i}n--Ruiz, A. and
-               Cabrera, Jaime Manuel and
-               Paulin Fuentes, Jorge Mauricio},
-  title     = {BorderedFJReduction: A Symbolic Engine for the Faddeev-Jackiw reduction as constrained matrix bordering},
+  author    = {Chan--L{'o}pez, Ram{'o}n Eduardo},
+  title     = {BorderedFJReduction: A Symbolic Engine for the Faddeev--Jackiw Reduction as Constrained Matrix Bordering},
   version   = {0.1.2},
   year      = {2026},
   publisher = {Zenodo},
