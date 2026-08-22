@@ -296,15 +296,12 @@ The present release provides a fully functional symbolic engine designed to:
 The theoretical framework, its proofs and its validation benchmarks are established in the published article; their computational counterpart — the executable reproduction of every reported reduction — is documented in the `BorderedFJReduction_Examples.nb` notebook within the `Examples` directory.
 ___
 
-## 👥 Authors
+## 👥 Authors' Contributions Statement
 
-- Ramón Eduardo Chan López (SECIHTI-DACB-UJAT)
-
-- José Alberto Martín Ruiz (ICN-UNAM, C3-UNAM)
-
-- Jaime Manuel Cabrera (SECIHTI-DACB-UJAT)
-
-- Jorge Mauricio Paulin Fuentes (DACB-UJAT)
+- **Ramón Eduardo Chan López** (SECIHTI-DACB-UJAT): *Original Idea, Conceptualization, Methodology, Software (Lead Architect & Developer), Formal Analysis, Investigation, Writing – Original Draft, Validation, Package Maintenance.*
+- **José Alberto Martín Ruiz** (ICN-UNAM, C3-UNAM): *Conceptualization, Formal Analysis, Software (Package Contributor), Writing – Review & Editing.*
+- **Jaime Manuel Cabrera** (SECIHTI-DACB-UJAT): *Review & Editing.*
+- **Jorge Mauricio Paulin Fuentes** (DACB-UJAT): *Review & Editing.*
 
 ___
 
