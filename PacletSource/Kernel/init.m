@@ -52,6 +52,26 @@ With[
 						ImageSize -> {550, 8},
 						AspectRatio -> Full
 					],
+					Row @ {
+						Style["Scope: ", 10, GrayLevel @ 0.45, Bold],
+						Style[
+							"regularization, weak-vanishing constraint analysis, and structural identification of gauge candidates ",
+							10, GrayLevel @ 0.45, FontFamily -> "Source Sans Pro"
+						],
+						Style[
+							"(\"GaugeSymmetry\" \[Rule] \"CandidateFound\" | \"NotCandidateFound\").",
+							10, GrayLevel @ 0.45, FontFamily -> "Source Sans Pro"
+						]
+					},
+					Style[
+						"Gauge generators are not constructed or verified by this engine.",
+						10, Italic, GrayLevel @ 0.45, FontFamily -> "Source Sans Pro"
+					],
+					Graphics[
+						{GrayLevel @ 0.85, Thickness @ 0.002, Line @ {{0, 0}, {1, 0}}},
+						ImageSize -> {550, 8},
+						AspectRatio -> Full
+					],
 					Column[
 						{
 							Style["Authored by:", 10, GrayLevel @ 0.5, Bold],
@@ -65,7 +85,7 @@ With[
 						Alignment -> Center, Spacings -> 0.3
 					],
 					Row @ {
-						Style["v0.1.2  |  Development Build | ", 10, GrayLevel @ 0.6],
+						Style["v0.1.3  |  Development Build | ", 10, GrayLevel @ 0.6],
 						Style[
 							StringJoin["Mathematica ", ToString @ $VersionNumber, "  |  "],
 							10, GrayLevel @ 0.6
