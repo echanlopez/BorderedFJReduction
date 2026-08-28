@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18487436.svg)](https://doi.org/10.5281/zenodo.18487436)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18362979.svg)](https://doi.org/10.5281/zenodo.18362979)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Release](https://img.shields.io/github/v/release/echanlopez/BorderedFJReduction)
 
@@ -14,7 +14,7 @@ Matrix bordering structure of the Faddeev-Jackiw algorithm: kernel reduction and
 ___
 
 ## 📦 BorderedFJReduction
-<p align="center"> <img src="assets/bfred_logo.png" alt="BorderedFJReduction logo" width="600"/> </p> <p align="left"> <b>Conceptual flow of the bordered Faddeev–Jackiw reduction, highlighting constraint propagation, null-space coupling, and gauge symmetry detection.</b> </p>
+<p align="center"> <img src="assets/bfred_logo.png" alt="BorderedFJReduction logo" width="600"/> </p> <p align="left"> <b>Conceptual flow of the bordered Faddeev–Jackiw reduction, highlighting constraint propagation, null-space coupling, and the structural identification of gauge candidates.</b> </p>
 
 ___
 
@@ -25,6 +25,8 @@ BorderedFJReduction is a Wolfram Language paclet that provides a fully symbolic 
 The core contribution of this project is the realization that the FJ iterative extension of phase space is not a heuristic procedure, but a **geometrically constrained instance of the Matrix Bordering Technique (MBT)**, whose termination is governed by the reduction of the bordered matrix to the null space of the pre-symplectic form. This insight enables a deterministic, transparent, and automatable reduction process, preserving full parametric dependence throughout the computation.
 
 The engine returns an opaque symbolic object encapsulating the complete symplectic hierarchy, while exposing its internal structure through a controlled, queryable interface.
+
+**Scope of the engine.** The reduction terminates in exactly one of three states: the extended matrix is **regularized**, the consistency condition produces an **inconsistency**, or the recursion **stalls** in a way that is structurally compatible with a gauge symmetry. In the last case the engine reports a **candidate** and stops. It does not construct, classify or verify gauge generators; that analysis is developed in a companion engine and reported separately (see [Future Directions](#-future-directions)).
 
 ### Mathematical Foundation
 
@@ -65,9 +67,10 @@ which is precisely the constraint matrix whose nondegeneracy characterizes a sec
 
 The package automates the corresponding workflow:
 
-* **Kernel reduction:** computes $\ker(f^{(0)})$ and the reduced constraint matrix $\Gamma = N^{\top}B$ that governs regularity.
+* **Kernel reduction:** computes $\ker(f^{(m)})$ at every stage and the consistency contractions $v^{i}\partial_i V$ that generate the constraints $\Omega_\alpha$; regularity is decided by the rank of the bordered matrix, which by the factorization above is equivalent to $\det(\Gamma)\neq 0$.
 * **Exact correspondence:** links the regularity of the bordered matrix directly to the second-class structure of the constraints through the kernel–Poisson identity.
-* **Gauge diagnostics:** exposes the surviving null generators when the reduction halts with a residual kernel (first-class / gauge content).
+* **Weak-vanishing constraint algebra:** decides whether a newly generated constraint is genuinely new by **ideal membership** (Gröbner normal form) rather than by linear independence, which is the correct notion of Dirac consistency for nonlinear constraints.
+* **Candidate diagnostics:** reports a gauge **candidate**, with its branch, stage and multiplicity, when the recursion stalls with a residual kernel whose contractions vanish weakly.
 
 > Under the assumption that the generated constraints are independent and the consistency algorithm has been run to exhaustion, the Faddeev–Jackiw reduction terminates in a nondegenerate symplectic form if and only if $\Gamma$ is nonsingular, i.e. the system is second-class.
 
@@ -79,14 +82,17 @@ The package automates the corresponding workflow:
 - Theorem-driven formulation based on the Matrix Bordering Technique (not a procedural algorithm)
 - **Kernel (null-space) reduction** of singular pre-symplectic matrices via the reduced constraint matrix $\Gamma = N^{\top}B$
 - Regularity governed by the exact determinant factorization $\det(f^{(m)}) = \big(\prod_\ell \mu_\ell^2\big)\det(\Gamma)^2$
-- Automatic detection and classification of:
-  - Regular symplectic manifolds
+- **Weak vanishing decided by ideal membership:** constraint novelty and candidate verdicts are computed as Gröbner normal forms modulo the ideal of the accumulated constraints, exact for nonlinear constraints and for trigonometric-polynomial data (via the embedding $\cos\theta\mapsto c$, $\sin\theta\mapsto s$ with the Pythagorean relations adjoined)
+- Automatic classification of the terminal state:
+  - Regularized symplectic manifolds
   - Constraint hierarchies generated by consistency conditions
-  - Gauge symmetries, including null and linearly dependent constraints
+  - **Gauge candidates**, in the null-contraction and dependent-constraint branches
+  - **Inconsistent systems** (a nonvanishing, variable-free consistency condition)
 - Exact preservation of parametric dependence throughout the reduction process
    (essential for bifurcation, stability, and structural analysis)
 - Structured symbolic output encapsulated in a Wolfram `SummaryBox`
 - Opaque but fully queryable association-based interface for downstream analysis
+- Transparent accounting of the recursion: bordering rounds, algorithm passes, multipliers, constraints adjoined per round, and discarded (redundant or identically zero) candidates
 - Direct access to:
   - Extended symplectic matrices
   - Generalized symplectic brackets
@@ -98,7 +104,7 @@ ___
 ## 📐 Conceptual Architecture
 
 The reduction process is internally organized as a **directed dependency graph** of symbolic states, rather than a linear algorithm.
-Each iteration corresponds to a bordered extension of the symplectic 2-form until regularity or a residual kernel (gauge redundancy) is detected.
+Each iteration corresponds to a bordered extension of the symplectic 2-form until regularity, an inconsistency, or a residual kernel (gauge candidate) is detected.
 
 This mirrors the interpretation developed in Sect. 3.1 of the published article, where such graphs are called *causal* only in the rewriting-system sense of the Wolfram Physics Project:
 
@@ -109,9 +115,11 @@ ___
 
 - [🔧 Minimum Requirements](#-minimum-requirements)
 - [🚀 Installation](#-installation)
+- [🆕 What's New in v0.1.3](#-whats-new-in-v013)
 - [🧪 Basic Usage](#-basic-usage)
 - [🧩 API Summary](#-api-summary)
-- [🧭 Gauge Symmetry Detection](#-gauge-symmetry-detection)
+- [🧭 Gauge Candidate Identification](#-gauge-candidate-identification)
+- [⚠️ Messages and Failure Modes](#️-messages-and-failure-modes)
 - [📚 Scientific Context and Related Work](#-scientific-context-and-related-work)
 - [📖 Publication](#-publication)
 - 👥 [Authors' Contributions Statement](#-authors-contributions-statement)
@@ -132,7 +140,7 @@ ___
 
 ```mathematica
 PacletInstall[
-  "https://github.com/echanlopez/BorderedFJReduction/releases/download/v0.1.2/BorderedFJReduction-0.1.2.paclet",
+  "https://github.com/echanlopez/BorderedFJReduction/releases/download/v0.1.3/BorderedFJReduction-0.1.3.paclet",
   ForceVersionInstall -> True
 ]
 ```
@@ -144,12 +152,37 @@ Needs["BorderedFJReduction`"]
 ### Option 2: Local installation (development)
 
 ```mathematica
-PacletInstall["/path/to/BorderedFJReduction-0.1.2.paclet"]
+PacletInstall["/path/to/BorderedFJReduction-0.1.3.paclet"]
 ```
 
-> **Note:** Release v0.1.2 supersedes earlier archived versions and corrects
-> a paclet packaging issue (context isolation and symbol leakage),
-> without modifying the underlying algorithm or mathematical formulation.
+> **Note:** Release v0.1.3 supersedes earlier archived versions. Unlike v0.1.2,
+> which was a packaging correction only, this release changes the reported
+> verdict vocabulary and hardens the reduction itself; see
+> [What's New in v0.1.3](#-whats-new-in-v013) before upgrading existing code.
+
+## 🆕 What's New in v0.1.3
+
+**Breaking change — verdict vocabulary.** The key `"GaugeSymmetry"` now reports
+
+| Value | Meaning |
+|---|---|
+| `"CandidateFound"` | the recursion stalled on a kernel whose consistency contractions vanish weakly; a gauge symmetry is the expected, but **not certified**, explanation |
+| `"NotCandidateFound"` | no such stall occurred along the path actually traversed |
+
+The v0.1.2 values `"Found"` / `"NotFound"` are retired: they asserted a detection the engine never performed. Correspondingly, `"MatrixStatus"` reports `"GaugeCandidate"` instead of `"GaugeDetected"`, and every candidate halt stores `"GaugeAnalysis" -> Missing["NotAvailable", ...]` to make the boundary of the engine explicit. The prose key `"GaugeDetectionReason"` survives as a deprecated alias of `"GaugeCandidateReason"`, and `"PartialExtendedMatrix"` as a deprecated alias of `"ExtendedMatrix"`.
+
+**Corrections to the reduction itself.**
+
+- *Halting and iteration semantics.* The iteration predicate no longer evaluates the step function inside the test (every pass used to be computed twice, duplicating all Gröbner and `Simplify` work). `"IterationCount"` is now $m$, the number of **bordering rounds** — the superscript of $f^{(m)}$ — incremented only on extension; v0.1.2 incremented it by the *number of new constraints*, prematurely exhausting `"MaxIterations"`. The number of algorithm passes is reported separately as `"PassCount"`.
+- *Input validation.* The kinetic term must be linear in the atomic velocities `Derivative[1][q]`; otherwise the engine issues a message and returns `$Failed` instead of silently building a velocity-dependent one-form.
+- *Constraint novelty by ideal membership.* Redundancy is decided by the Gröbner normal form modulo the ideal of the accumulated constraints, which resolves the classical $q$ vs. $q^2$ pathology that defeats gradient-rank tests and no longer degenerates on trigonometric data.
+- *Identically zero candidates* are discarded during the step and recorded in `"Diagnostics"`, never adjoined; v0.1.2 adjoined them, creating multipliers with zero coupling and hence permanent spurious null modes.
+- *Multiplier collision.* Multipliers are numbered globally through `"MultiplierCount"`; successive rounds used to rebuild them from index 1 and collapse distinct multipliers into one variable.
+- *Inconsistency detection.* A nonvanishing, variable-free consistency condition now halts with `"MatrixStatus" -> "Inconsistent"` instead of looping into a false gauge verdict.
+- *Coherent summary on every halt.* The stage matrix, its rank and the structural counters are written on all three halts, so first-pass halts no longer display `Missing[KeyAbsent, ...]`.
+- *Reload hygiene.* The public symbols no longer carry the `Locked` attribute, which forbade the `Unprotect` at the head of the package and broke every in-session reload.
+
+**New conveniences.** A declarative call signature (an `Association` with the three system keys), the option `"TraceStages"`, and a per-stage record of the constraints adjoined in each round.
 
 ## 🧪 Basic Usage
 
@@ -184,6 +217,24 @@ metadata.
 ```mathematica
 bfj = BorderedFJMatrix[kineticEnergy, symplecticPotential, vars];
 ```
+
+The system may also be supplied declaratively, as an `Association` carrying the
+three system keys; extra keys are ignored:
+
+```mathematica
+bfj = BorderedFJMatrix[<|
+  "kinetic-energy"        -> kineticEnergy,
+  "symplectic-potential"  -> symplecticPotential,
+  "vars"                  -> vars|>];
+```
+
+**Options**
+
+| Option | Default | Effect |
+|---|---|---|
+| `"MaxIterations"` | `5` | upper bound on **bordering rounds** (not on passes); the terminal readout pass is always granted |
+| `"TraceStages"` | `False` | when `True`, records a per-pass trace under `"StageData"`: kernel, contractions, and the transient / persistent split of the null vectors |
+
 The returned object supports the following query interface:
 
 ```mathematica
@@ -192,17 +243,44 @@ bfj["ExtendedMatrix"]
 bfj["ExtendedOneForm"]
 bfj["ExtendedSymplecticVariables"]
 bfj["InverseExtendedMatrix"]
-bfj["IterationCount"]
 bfj["MatrixStatus"]
+bfj["GaugeSymmetry"]
+bfj["IterationCount"]
+bfj["PassCount"]
+bfj["Properties"]
 ```
 
-Here `"MatrixStatus"` reports the outcome of the regularity criterion
-$\det(f^{(m)}) \neq 0 \iff \det(\Gamma) \neq 0$: it returns `"Regular"` when the
-reduced constraint matrix is nonsingular (a second-class system) and `"Singular"`
-when a residual kernel survives (first-class / gauge content). The generated
-`"Constraints"` are the functions $\Omega_\alpha$ whose gradients form the
-bordering block $B$, and `"InverseExtendedMatrix"` returns the generalized
-symplectic brackets of the regularized theory.
+Here `"MatrixStatus"` reports the terminal state of the reduction, which by the
+factorization $\det(f^{(m)}) = \big(\prod_\ell \mu_\ell^2\big)\det(\Gamma)^2$ is
+governed by $\det(\Gamma)$:
+
+| `"MatrixStatus"` | Meaning |
+|---|---|
+| `"Regularized"` | the bordered matrix has full rank ($\det(\Gamma)\neq 0$): a second-class system, and `"InverseExtendedMatrix"` holds the generalized brackets |
+| `"GaugeCandidate"` | the recursion stalled with a residual kernel whose contractions vanish weakly |
+| `"Inconsistent"` | the consistency condition produced a nonvanishing, variable-free constraint |
+
+The status `"NotRegularized"` is computed internally but never appears in a
+returned object: that case exhausts `"MaxIterations"` and the engine issues
+`BorderedFJMatrix::iter` and returns `$Failed`. The generated `"Constraints"` are
+the functions $\Omega_\alpha$ whose gradients form the bordering block $B$, and
+`"InverseExtendedMatrix"` returns the generalized symplectic brackets of the
+regularized theory.
+
+The two counters answer different questions and satisfy two invariants worth
+using as an audit:
+
+```mathematica
+Length[bfj @ "ConstraintsPerStage"] === bfj @ "IterationCount"   (* rounds *)
+Total [bfj @ "ConstraintsPerStage"] === bfj @ "MultiplierCount"  (* multipliers *)
+```
+
+`"IterationCount"` counts bordering rounds; `"PassCount"` counts algorithm passes,
+which exceeds the former by the terminal readout pass. When several constraints
+are adjoined simultaneously — as in the ring of masses and springs, where both
+shadows of $\nabla V$ on a two-dimensional kernel are adjoined at once — a single
+round produces several multipliers and there is no intermediate stage in the
+recursion.
 
 To visualize the generalized symplectic brackets in a structured,
 publication-ready format:
@@ -215,30 +293,102 @@ FJSymplecticFrame[bfj]
   <img src="docs/bfjreduction2.gif" alt="FJSymplecticFrame visualization demo" width="600">
 </p>
 
-**Note:** The visualization shows the extended symplectic structure with publication-ready formatting, including the inverse matrix (generalized brackets) and diagnostic information.
+**Note:** The visualization shows the extended symplectic structure with publication-ready formatting, including the inverse matrix (generalized brackets) and diagnostic information. It applies only to a regularized reduction; on any other object it issues `FJSymplecticFrame::noinv` and returns `$Failed`.
 
 ## 🧩 API Summary
 
-The object returned by `BorderedFJMatrix` is intentionally opaque but fully queryable:
+The object returned by `BorderedFJMatrix` is intentionally opaque but fully queryable. The keys actually present depend on the halt and are advertised by `"Properties"`.
+
+**Structural data (all halts)**
 
 - `"Constraints"` — generated constraint functions $\Omega_\alpha$
 - `"ExtendedMatrix"` — final bordered symplectic matrix $f^{(m)}$
+- `"ExtendedMatrixRank"` — rank of $f^{(m)}$
 - `"ExtendedOneForm"` — extended canonical one-form
 - `"ExtendedSymplecticVariables"` — augmented phase-space variables (including Lagrange multipliers)
+- `"MatrixStatus"` — `"Regularized"`, `"GaugeCandidate"` or `"Inconsistent"`
+- `"GaugeSymmetry"` — `"CandidateFound"` or `"NotCandidateFound"`
+
+**Recursion accounting**
+
+- `"IterationCount"` — number of bordering rounds $m$, the superscript of $f^{(m)}$
+- `"PassCount"` — number of algorithm passes, including the terminal readout
+- `"ConstraintsPerStage"` — constraints adjoined in each round
+- `"MultiplierCount"` — total number of Lagrange multipliers introduced
+- `"ConstraintsLength"` — number of surviving constraints
+- `"RedundantConstraints"` — candidates discarded as weakly zero (in the ideal of the accumulated constraints)
+- `"Diagnostics"` — record of null-constraint and redundancy events
+- `"StageData"` — per-pass trace, when `"TraceStages" -> True`
+
+**Regularized halt**
+
 - `"InverseExtendedMatrix"` — generalized symplectic brackets
-- `"IterationCount"` — number of FJ iterations required for regularization
-- `"MatrixStatus"` — `"Regular"` (nonsingular $\Gamma$) or `"Singular"` (residual kernel)
+
+**Gauge-candidate halt**
+
+- `"GaugeCandidateBranch"` — `"ZeroContraction"` or `"DependentConstraints"`
+- `"GaugeCandidateReason"` — prose statement of the branch, the halting stage $f^{(m)}$ and the kernel dimension
+- `"GaugeCandidateMethod"` — the ideal-membership method behind the verdict
+- `"KernelDimension"` — $\dim\ker f^{(m)}$ at the stall
+- `"CandidateMultiplicity"` — number of independent candidate directions
+- `"GaugeAnalysis"` — `Missing["NotAvailable", ...]`: generator construction is out of scope
+
+**Inconsistent halt**
+
+- `"InconsistencyWitness"` — the offending variable-free constraint
 ___
 
-## 🧭 Gauge Symmetry Detection
+## 🧭 Gauge Candidate Identification
 
-If the reduction halts with a residual kernel — i.e. $\det(\Gamma) = 0$ — the extended matrix is not regularized and the engine reports the two structural signatures that produce this outcome:
+If the reduction stalls with a residual kernel — i.e. $\det(\Gamma) = 0$ — the extended matrix is not regularized, and the engine reports the structural signature that produced the stall:
 
-- **Null constraints** (the consistency condition is satisfied identically)
+- **Null contractions** (`"ZeroContraction"`): every consistency contraction $v^{i}\partial_i V$ of the kernel of $f^{(m)}$ vanishes identically, so no new constraint can be generated.
 
-- **Dependent constraints** (new constraints do not restrict the phase space further)
+- **Dependent constraints** (`"DependentConstraints"`): every informative candidate lies in the **ideal** of the accumulated constraints, so it vanishes on the constraint surface and restricts the phase space no further. Redundancy here is weak vanishing in the Dirac sense, decided by a Gröbner normal form — not linear independence of gradients.
 
-In such cases the final pre-symplectic matrix and its null vectors are preserved, exposing the **candidate generators** of the gauge transformations. A residual kernel is a *necessary* signature of first-class constraints; confirming a genuine gauge symmetry additionally requires that the surviving null modes $v$ satisfy $v^{i}\partial_i V = 0$ (otherwise the halt reflects an inconsistent system rather than a gauge one). The engine therefore exposes the candidate generators and leaves the physical confirmation to the user.
+Both are **necessary** signatures of first-class content, not sufficient ones, which is exactly why the verdict is `"CandidateFound"` rather than a detection. The engine therefore reports the branch, the halting stage, the kernel dimension and the number of independent candidate directions, and stops there: it constructs no generator, no infinitesimal transformation and no canonical charge.
+
+The halting matrix $f^{(m)}$ is stored on every halt, so the candidate directions themselves remain recoverable by the user:
+
+```mathematica
+NullSpace[bfj @ "ExtendedMatrix"]
+```
+
+and, with `"TraceStages" -> True`, the per-pass kernels, contractions and the transient / persistent split are available under `"StageData"`.
+
+A stall whose contractions do *not* vanish weakly is no longer read as a gauge situation: a nonvanishing, variable-free consistency condition is now reported explicitly as `"MatrixStatus" -> "Inconsistent"` with its witness.
+
+**Why "candidate" is the correct word.** The residual kernel of the extended matrix is routinely read as the space of gauge generators. That reading is not merely imprecise. Consider the following four-variable system, taken from the companion work — E. Chan–López, *From Null Modes to Gauge Generators: A Bordered Faddeev–Jackiw Theory of Constraint Chains* (preprint), where it is established as a structural result rather than an illustration:
+
+```mathematica
+counterexample = <|
+  "kinetic-energy"       -> q2 Derivative[1][q1],
+  "symplectic-potential" -> q1 q3 + q2 q4,
+  "vars"                 -> {q1, q2, q3, q4}|>;
+
+BorderedFJMatrix[counterexample]
+(* "GaugeSymmetry" -> "CandidateFound", branch "DependentConstraints",
+   "KernelDimension" -> 2 *)
+```
+
+The engine halts with a two-dimensional residual kernel whose contractions both lie in the constraint ideal — the textbook signature of gauge freedom. Yet the Euler–Lagrange equations of this Lagrangian read $\dot q_2 = -q_3$, $\dot q_1 = q_4$, $q_1 = 0$, $q_2 = 0$, so $q_1 \equiv q_2 \equiv 0$ and, differentiating, $q_3 = q_4 = 0$. The solution is unique: the system has **zero degrees of freedom and admits no gauge transformation whatsoever**.
+
+The mechanism is visible in the potential itself, which depends on the degenerate coordinates only through the constraints, $V = q_3\Omega_1 + q_4\Omega_2$. Every contraction is then automatically in the ideal, and no ideal-membership test — however exact — can tell this situation apart from genuine gauge freedom. What the bordering does is insert $\dot\lambda^\alpha$ into the equations of motion, absorbing precisely the terms that determined $q_3$ and $q_4$; the resulting freedom belongs to the extended system, not to the original one.
+
+Reporting such a halt as a detection would therefore be an error rather than an approximation, and no amount of extra bookkeeping inside this engine would repair it: what separates a genuine generator from a mere null direction is a criterion that lives outside the reduction. That criterion — together with the analysis of this counterexample, the chain structure that rejects its false candidates, and the decomposition of the residual kernel — is developed in the companion work cited above.
+
+___
+
+## ⚠️ Messages and Failure Modes
+
+| Message | Condition | Result |
+|---|---|---|
+| `BorderedFJMatrix::lin` | the kinetic term is not linear in `Derivative[1][q]` (the Lagrangian is not first-order) | `$Failed` |
+| `BorderedFJMatrix::maxit` | `"MaxIterations"` is not a positive integer or `Infinity` | `$Failed` |
+| `BorderedFJMatrix::iter` | the allowed bordering rounds were exhausted with the matrix still unregularized | `$Failed` |
+| `BorderedFJMatrix::incons` | a nonvanishing, variable-free consistency condition was generated | object with `"MatrixStatus" -> "Inconsistent"` |
+| `BorderedFJMatrix::nonpoly` | the constraint data is neither polynomial nor trigonometric-polynomial, so ideal membership falls back to generic gradient rank over the function field; issued at most once per run | object, with generic (not ideal-theoretic) verdicts |
+| `FJSymplecticFrame::noinv` | the object carries no `"InverseExtendedMatrix"` | `$Failed` |
 
 ___
 
@@ -265,7 +415,7 @@ The implementation has been validated on:
 
 - Singular Lagrangian system with noncanonical kinetic structure
 - Singular mechanical systems analyzed within the Dirac–Bergmann framework  
-- Systems exhibiting gauge symmetry
+- Systems exhibiting gauge symmetry, reported here as candidates
 
 >**These examples illustrate how the symbolic engine bridges abstract symplectic geometry with concrete mechanical realizations.**
 
@@ -307,8 +457,9 @@ ___
 
 ## 🔮 Future Directions
 
-The current engine targets finite-dimensional systems (point mechanics).
-However, its algebraic architecture is designed as a kernel for future extensions toward:
+The current engine targets finite-dimensional systems (point mechanics) and stops at the identification of gauge candidates.
+The structural analysis of those candidates — construction of the generators, their independence and degeneracy loci, and the associated canonical charges — is developed in a companion engine and reported in **"From Null Modes to Gauge Generators: A Bordered Faddeev–Jackiw Theory of Constraint Chains"** (E. Chan–López, preprint). This repository deliberately stops at the identification of candidates.
+Beyond that, the algebraic architecture is designed as a kernel for future extensions toward:
 
 - Field theories
 - Symbolic tensor calculus
@@ -361,7 +512,9 @@ If you use this software in academic work, please cite both the article and the 
 
 - **Article DOI (Eur. Phys. J. Plus 141, 932 (2026)):** https://doi.org/10.1140/epjp/s13360-026-08146-x  
 - **Concept DOI (all software versions):** https://doi.org/10.5281/zenodo.18362979  
-- **Version-specific DOI (v0.1.2 – recommended):** https://doi.org/10.5281/zenodo.18487436
+- **Version-specific DOI (v0.1.3 – recommended):** https://doi.org/10.5281/zenodo.22135003  
+- **Version-specific DOI (v0.1.2 – superseded):** https://doi.org/10.5281/zenodo.18487436  
+- **Version-specific DOI (v0.1.1 – superseded):** https://doi.org/10.5281/zenodo.18362980
 ___
 
 ## BibTeX Citation
@@ -394,10 +547,10 @@ If you use **BorderedFJReduction** in your research, please cite the published a
   author    = {Chan--L{'o}pez, Ram{'o}n Eduardo},
   title     = {BorderedFJReduction: 
   A Symbolic Engine for the Faddeev--Jackiw Reduction as Constrained Matrix Bordering},
-  version   = {0.1.2},
+  version   = {0.1.3},
   year      = {2026},
   publisher = {Zenodo},
-  doi       = {10.5281/zenodo.18487436},
+  doi       = {10.5281/zenodo.22135003},
   url       = {https://github.com/echanlopez/BorderedFJReduction}
 }
 ```
