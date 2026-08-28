@@ -1,5 +1,7 @@
 (* ::Package:: *)
 
+(* ::Package:: *)
+
 (*Load the main package*)
 Get["BorderedFJReduction`BorderedFJReduction`"]
 (*Welcome!*)
@@ -55,11 +57,7 @@ With[
 					Row @ {
 						Style["Scope: ", 10, GrayLevel @ 0.45, Bold],
 						Style[
-							"regularization, weak-vanishing constraint analysis, and structural identification of gauge candidates ",
-							10, GrayLevel @ 0.45, FontFamily -> "Source Sans Pro"
-						],
-						Style[
-							"(\"GaugeSymmetry\" \[Rule] \"CandidateFound\" | \"NotCandidateFound\").",
+							"regularization, weak-vanishing constraint analysis, and structural identification of gauge candidates.",
 							10, GrayLevel @ 0.45, FontFamily -> "Source Sans Pro"
 						]
 					},
@@ -84,17 +82,26 @@ With[
 						},
 						Alignment -> Center, Spacings -> 0.3
 					],
-					Row @ {
-						Style["v0.1.3  |  Development Build | ", 10, GrayLevel @ 0.6],
-						Style[
-							StringJoin["Mathematica ", ToString @ $VersionNumber, "  |  "],
-							10, GrayLevel @ 0.6
-						],
-						Style[
-							DateString @ {"Day", " ", "MonthName", " ", "Year"},
-							10, GrayLevel @ 0.6
-						]
-					}
+					Column[
+						{
+							Style[
+								"BorderedFJReduction v0.1.3", 10, GrayLevel @ 0.6, Bold,
+								FontFamily -> "Source Sans Pro"
+							],
+							Row @ {
+								Style["Latest Release  |  ", 10, GrayLevel @ 0.6],
+								Style[
+									StringJoin["Mathematica ", ToString @ $VersionNumber, "  |  "],
+									10, GrayLevel @ 0.6
+								],
+								Style[
+									DateString @ {"Day", " ", "MonthName", " ", "Year"},
+									10, GrayLevel @ 0.6
+								]
+							}
+						},
+						Alignment -> Center, Spacings -> 0.3
+					]
 				},
 				Alignment -> Center, Spacings -> 0.8
 			],
